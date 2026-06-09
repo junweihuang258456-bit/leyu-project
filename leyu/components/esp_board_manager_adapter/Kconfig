@@ -1,0 +1,23 @@
+menu "ESP Board Manager Adapter Configuration"
+
+config ESP_BOARD_DEV_LCD_TOUCH_SUPPORT
+    bool "Device 'lcd_touch' support"
+    default n
+    help
+        Enable lcd_touch device support.
+        This option enables the lcd_touch device driver.
+
+config ESP_BOARD_DEV_LED_STRIP_SUPPORT
+    bool "Device 'led_strip' support"
+    default n
+    help
+        Enable led_strip device support.
+        This option enables the led_strip device driver.
+
+config ESP_BOARD_DEV_DISPLAY_LCD_SUB_RGB_3WIRE_SPI_SUPPORT
+    bool "Device 'display_lcd_sub_rgb_3wire_spi' support"
+    default n
+    help
+        Enable display_lcd_sub_rgb_3wire_spi device support.
+        This option enables the display_lcd_sub_rgb_3wire_spi device driver.
+endmenu

@@ -1,0 +1,72 @@
+menu "Example Configuration"
+    config ESP_BOARD_DEV_LITTLEFS_SUPPORT
+        bool "Enable LittleFS Support"
+        default y
+        help
+            Enable LittleFS support for the board.
+
+    config BAIDU_APP_ID
+        string "Baidu App ID"
+        default "appid**********"
+        help
+            Baidu application ID for authentication.
+
+    config BAIDU_USER_ID
+        string "Baidu User ID"
+        default "userid**********"
+        help
+            Baidu user ID for identification.
+
+    config BAIDU_WORKFLOW
+        string "Baidu Workflow"
+        default "workflow**********"
+        help
+            Baidu workflow configuration.
+
+    config BAIDU_LICENSE_KEY
+        string "Baidu License Key"
+        default "key**********"
+        help
+            Baidu license key for authorization.
+
+    config BAIDU_INSTANCE_ID
+        int "Baidu Instance ID"
+        default 123456
+        help
+            Baidu instance ID (integer value).
+
+    config SERVER_URL
+        string "Server URL"
+        default "http://192.168.3.73:8936/api/v1/aiagent"
+        help
+            Please refer to the README file in the brtc directory to set up the server, and then obtain the relevant URLs.
+
+    config AUDIO_OUTPUT_VOLUME
+        int "Audio Output Volume"
+        range 0 100
+        default 90
+        help
+            设置音频输出音量，范围0-100，默认90。
+
+    config AUDIO_INPUT_GAIN
+        int "Audio Input Gain"
+        range 0 100
+        default 60
+        help
+            设置音频输入增益，范围0-100，默认32。
+
+    config EXAMPLE_ENABLE_AT_CMD
+        bool "Enable USB RNDIS AT Command"
+        default y
+        help
+            Enable USB RNDIS AT Command.
+
+    config EXAMPLE_AT_INTERFACE_NUM
+        depends on EXAMPLE_ENABLE_AT_CMD
+        int "USB RNDIS AT Interface Number"
+        default 2
+        help
+            Set the USB RNDIS AT interface number.
+
+endmenu
+

@@ -1,0 +1,2106 @@
+ ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1668
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x317c
+entry 0x403c894c
+I (25) boot: ESP-IDF v5.5.4 2nd stage bootloader
+I (25) boot: compile time Jun  4 2026 12:45:26
+I (25) boot: Multicore bootloader
+I (25) boot: chip revision: v0.2
+I (28) boot: efuse block revision: v1.3
+I (31) qio_mode: Enabling default flash chip QIO
+I (36) boot.esp32s3: Boot SPI Speed : 80MHz
+I (40) boot.esp32s3: SPI Mode       : QIO
+I (43) boot.esp32s3: SPI Flash Size : 16MB
+I (47) boot: Enabling RNG early entropy source...
+I (52) boot: Partition Table:
+I (54) boot: ## Label            Usage          Type ST Offset   Length
+I (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (67) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (74) boot:  2 otadata          OTA data         01 00 00010000 00002000
+I (80) boot:  3 ota_0            OTA app          00 10 00020000 003e8000
+I (87) boot:  4 ota_1            OTA app          00 11 00420000 003e8000
+I (93) boot:  5 model            Unknown data     01 82 00808000 00412000
+I (100) boot:  6 spiffs_data      Unknown data     01 82 00c1a000 00100000
+I (106) boot:  7 wifi_web         Unknown data     01 82 00d1a000 00040000
+I (113) boot: End of partition table
+I (116) esp_image: segment 0: paddr=00020020 vaddr=3c1e0020 size=89344h (561988) map
+I (207) esp_image: segment 1: paddr=000a936c vaddr=3fca7200 size=06cach ( 27820) load
+I (212) esp_image: segment 2: paddr=000b0020 vaddr=42000020 size=1d92dch (1938140) map
+I (500) esp_image: segment 3: paddr=00289304 vaddr=3fcadeac size=031c0h ( 12736) load
+I (503) esp_image: segment 4: paddr=0028c4cc vaddr=40378000 size=1f1a0h (127392) load
+I (528) esp_image: segment 5: paddr=002ab674 vaddr=50000000 size=00028h (    40) load
+I (528) esp_image: segment 6: paddr=002ab6a4 vaddr=600fe000 size=00060h (    96) load
+I (545) boot: Loaded app from partition at offset 0x20000
+I (545) boot: Disabling RNG early entropy source...
+W (555) flash HPM: HPM mode is optional feature that depends on flash model. Read Docs First!
+W (555) flash HPM: HPM mode with DC adjustment is disabled. Some flash models may not be supported. Read Docs First!
+W (562) flash HPM: High performance mode of this flash model hasn't been supported.
+I (570) MSPI Timing: Enter flash timing tuning
+I (574) octal_psram: vendor id    : 0x0d (AP)
+I (578) octal_psram: dev id       : 0x02 (generation 3)
+I (583) octal_psram: density      : 0x03 (64 Mbit)
+I (587) octal_psram: good-die     : 0x01 (Pass)
+I (591) octal_psram: Latency      : 0x01 (Fixed)
+I (596) octal_psram: VCC          : 0x01 (3V)
+I (600) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (605) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (610) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (614) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (619) octal_psram: DriveStrength: 0x00 (1/1)
+I (624) MSPI Timing: Enter psram timing tuning
+I (633) esp_psram: Found 8MB PSRAM device
+I (633) esp_psram: Speed: 120MHz
+I (666) mmu_psram: Read only data copied and mapped to SPIRAM
+I (782) mmu_psram: Instructions copied and mapped to SPIRAM
+I (782) cpu_start: Multicore app
+I (1019) esp_psram: SPI SRAM memory test OK
+I (1028) cpu_start: GPIO 44 and 43 are used as console UART I/O pins
+I (1028) cpu_start: Pro cpu start user code
+I (1028) cpu_start: cpu freq: 240000000 Hz
+I (1030) app_init: Application information:
+I (1034) app_init: Project name:     leyu_yingji_v16_1
+I (1039) app_init: App version:      7a610fd-dirty
+I (1044) app_init: Compile time:     Jun  4 2026 12:43:37
+I (1049) app_init: ELF file SHA256:  c692f0421...
+I (1053) app_init: ESP-IDF:          v5.5.4
+I (1057) efuse_init: Min chip rev:     v0.0
+I (1061) efuse_init: Max chip rev:     v0.99 
+I (1065) efuse_init: Chip rev:         v0.2
+I (1069) heap_init: Initializing. RAM available for dynamic allocation:
+I (1075) heap_init: At 3FCB4878 len 00034E98 (211 KiB): RAM
+I (1081) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (1086) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (1091) heap_init: At 600FE060 len 00001F88 (7 KiB): RTCRAM
+I (1097) esp_psram: Adding pool of 5667K of PSRAM memory to heap allocator
+I (1103) esp_psram: Adding pool of 27K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (1115) spi_flash: detected chip: generic
+I (1118) spi_flash: flash io: qio
+W (1121) rmt(legacy): legacy driver is deprecated, please migrate to `driver/rmt_tx.h` and/or `driver/rmt_rx.h`
+I (1131) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (1137) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (1144) coexist: coex firmware version: 093e3d2
+I (1148) coexist: coexist rom version e7ae62f
+I (1153) main_task: Started on CPU0
+I (1156) esp_psram: Reserving pool of 16K of internal memory for DMA/internal allocations
+I (1164) main_task: Calling app_main()
+I (1174) main: GPIO1、GPIO48和GPIO2已设置为高电平
+I (1175) main: 开始硬件复位 4G 模块...
+I (1677) main: 4G 模块硬件复位完成
+I (1677) main: 已禁用板级SPIFFS设备初始化，避免与SD卡冲突
+I (1677) XGB-1815: RMT初始化完成，GPIO: 12，时钟分频: 8
+I (1710) main: 初始可用堆内存: 6049228 字节
+I (1711) PERIPH_I2C: I2C master bus initialized successfully
+W (1711) PERIPH_I2S: I2S[0] STD already enabled, tx:0x3c26a6b8, rx:0x3c26a874
+I (1716) PERIPH_I2S: I2S[0] STD,  TX, ws: 45, bclk: 9, dout: 8, din: 10
+I (1723) PERIPH_I2S: I2S[0] initialize success: 0x3c26a6b8
+I (1728) PERIPH_I2S: I2S[0] STD, RX, ws: 45, bclk: 9, dout: 8, din: 10
+I (1734) PERIPH_I2S: I2S[0] initialize success: 0x3c26a874
+I (1739) PERIPH_GPIO: Initialize success, pin: 46, set the default level: 0
+I (1746) BOARD_MANAGER: All peripherals initialized
+I (1751) BOARD_PERIPH: Reuse periph: i2s_audio_out, ref_count=2
+I (1756) DEV_AUDIO_CODEC: DAC is ENABLED
+I (1760) DEV_AUDIO_CODEC: Init audio_dac, i2s_name: i2s_audio_out, i2s_rx_handle:0x0, i2s_tx_handle:0x3c26a6b8, data_if: 0x3fceeda0
+I (1771) BOARD_PERIPH: Reuse periph: i2c_master, ref_count=2
+I (1783) ES8311: Work in Slave mode
+I (1785) DEV_AUDIO_CODEC: Successfully initialized codec: audio_dac
+I (1786) DEV_AUDIO_CODEC: Create esp_codec_dev success, dev:0x3fcbfc54, chip:es8311
+I (1793) DEV_AUDIO_CODEC: ADC is ENABLED
+I (1797) BOARD_PERIPH: Reuse periph: i2s_audio_in, ref_count=2
+I (1803) DEV_AUDIO_CODEC: Init audio_adc, i2s_name: i2s_audio_in, i2s_rx_handle:0x3c26a874, i2s_tx_handle:0x3c26a6b8, data_if: 0x3fcbfc9c
+I (1815) BOARD_PERIPH: Reuse periph: i2c_master, ref_count=3
+I (1826) ES8311: Work in Slave mode
+I (1828) DEV_AUDIO_CODEC: Successfully initialized codec: audio_adc
+I (1829) DEV_AUDIO_CODEC: Create esp_codec_dev success, dev:0x3fcbfdb4, chip:es8311
+I (1837) BOARD_MANAGER: Board manager initialized
+I (1841) BOARD_DEVICE: Device audio_dac already initialized, ref_count: 2
+I (1848) BOARD_DEVICE: Device audio_adc already initialized, ref_count: 2
+E (1854) BOARD_DEVICE: [esp_board_device_show] Device fs_sdcard not found
+I (1861) BOARD_DEVICE: Device handle audio_dac found, Handle: 0x3fceed78 TO: 0x3fceed78
+I (1868) BOARD_DEVICE: Device handle audio_adc found, Handle: 0x3fcbfc84 TO: 0x3fcbfc84
+I (1876) BASIC_BOARD: board_name: ESP32_S3_Korvo_2L, target_name: esp32s3_korvo2_v3
+I (1883) BASIC_BOARD: board_name: ESP32_S3_Korvo_2L, target_name: echoear_core_board_v1_2
+I (1891) BASIC_BOARD: board_name: ESP32_S3_Korvo_2L, target_name: esp_box_3
+I (1898) BASIC_BOARD: board_name: ESP32_S3_Korvo_2L, target_name: ESP32_S3_Korvo_2L
+I (1905) AUDIO_PROCESSOR: Initializing audio manager...
+I (1910) AUDIO_PROCESSOR: Audio manager initialized successfully
+I (1916) BRTC_APP: play_dev: 0x3fcbfc54, rec_dev: 0x3fcbfdb4
+I (1921) I2S_IF: Paired data: 0x3fceeda0, current mode: record, paired in_enable: 0, paired out_enable: 0
+I (1931) I2S_IF: STD: RX, data_bit: 16, slot_bit: 16, ws_width: 16, slot_mode: STEREO, slot_mask: 0x3
+I (1940) I2S_IF: STD: RX, sample_rate_hz: 16000, mclk_multiple: 256, clk_src: 6
+I (1947) I2S_IF: STD: TX, data_bit: 16, slot_bit: 16, ws_width: 16, slot_mode: STEREO, slot_mask: 0x3
+I (1956) I2S_IF: STD: TX, sample_rate_hz: 16000, mclk_multiple: 256, clk_src: 6
+I (1977) Adev_Codec: Open codec device OK
+I (1977) I2S_IF: Current mode(playback) and peer mode have same sample_rate 16000, channel 2, bits_per_sample 16
+I (1980) I2S_IF: STD: TX, data_bit: 16, slot_bit: 16, ws_width: 16, slot_mode: STEREO, slot_mask: 0x3
+I (1989) I2S_IF: STD: TX, sample_rate_hz: 16000, mclk_multiple: 256, clk_src: 6
+I (2011) Adev_Codec: Open codec device OK
+I (2012) AUDIO_PROCESSOR: Opening audio playback...
+W (2012) AUD_SDEC_REG: Overwrote ES decoder 542523735
+I (2013) ASP_POOL: Dest rate:16000
+I (2016) ASP_POOL: Dest channels:2
+I (2019) ASP_POOL: Dest bits:16
+I (2022) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x0, run:0]
+I (2030) AUDIO_PROCESSOR: Audio playback opened successfully
+I (2036) ASP_POOL: Dest rate:16000
+I (2039) ASP_POOL: Dest channels:2
+I (2042) ASP_POOL: Dest bits:16
+I (2045) AUDIO_PROCESSOR: Audio prompt opened successfully
+I (2045) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc146c-0x3fcc146c, wk:0x0, run:0]
+I (2050) AUDIO_PROCESSOR: Opening audio recorder...
+I (2062) ESP_GMF_POOL: Registered items on pool:0x3c26bb00, audio_recorder_open-1275
+I (2070) ESP_GMF_POOL: EL, Item:0x3c26bbf0, H:0x3c26bb14, TAG:aud_enc
+I (2076) ESP_GMF_POOL: EL, Item:0x3c26bcd0, H:0x3c26bc00, TAG:aud_ch_cvt
+I (2082) ESP_GMF_POOL: EL, Item:0x3c26bdac, H:0x3c26bce0, TAG:aud_bit_cvt
+I (2089) ESP_GMF_POOL: EL, Item:0x3c26be90, H:0x3c26bdbc, TAG:aud_rate_cvt
+I (2095) MODEL_LOADER: The storage free size is 24576 KB
+I (2100) MODEL_LOADER: The partition size is 4168 KB
+I (2105) MODEL_LOADER: Successfully load srmodels
+I (2109) AFE_CONFIG: Set Noise Suppression Model: nsnet2
+I (2114) AFE_CONFIG: Set WakeNet Model: wn9_xiaoluxiaolu_tts2
+
+/********** General AFE (Audio Front End) Parameter **********/
+pcm_config.total_ch_num: 2
+pcm_config.mic_num: 1: [ ch0 ]
+pcm_config.ref_num: 1: [ ch1 ]
+pcm_config.sample_rate: 16000
+afe_type: SR
+afe_mode: LOW COST
+afe_perferred_core: 0
+afe_perferred_priority: 5
+afe_ringbuf_size: 50
+memory_alloc_mode: 3
+afe_linear_gain: 1.0
+debug_init: false
+fixed_first_channel: false
+
+/********** AEC (Acoustic Echo Cancellation) **********/
+aec_init: true
+aec mode: SR_LOW_COST
+aec_filter_length: 4
+
+/********** SE (Speech Enhancement, Microphone Array Processing) **********/
+se_init: false, model: BSS
+
+/********** NS (Noise Suppression) **********/
+ns_init: false
+ns model name: nsnet2
+
+/********** VAD (Voice Activity Detection) **********/
+vad_init: false
+vad_mode: 0
+vad_model_name: NULL
+vad_min_speech_ms: 128
+vad_min_noise_ms: 1000
+vad_delay_ms: 128
+vad_mute_playback: false
+vad_enable_channel_trigger: false
+
+/********** WakeNet (Wake Word Engine) **********/
+wakenet_init: false
+wakenet_model_name: wn9_xiaoluxiaolu_tts2
+wakenet_model_name_2: NULL
+wakenet_mode: 0
+
+/********** AGC (Automatic Gain Control) **********/
+agc_init: false
+agc_mode: WAKENET
+agc_compression_gain_db: 9
+agc_target_level_dbfs: 9
+
+/**************************************************/
+I (2277) AFE: AFE Version: (1MIC_V250121)
+I (2277) AFE: Input PCM Config: total 2 channels(1 microphone, 1 playback), sample rate:16000
+I (2278) AFE: AFE Pipeline: [input] -> |AEC(SR_LOW_COST)| -> [output]
+I (2285) AFE_MANAGER: Feed task, ch 2, chunk 512, buf size 2048
+I (2290) GMF_AFE: Create AFE, ai_afe-0x3c26feb0
+I (2294) GMF_AFE: Create AFE, ai_afe-0x3c2a5b04
+I (2298) GMF_AFE: New an object,ai_afe-0x3c2a5b04
+I (2303) AUDIO_PROCESSOR: Configuring PCM encoder
+I (2307) AUDIO_PROCESSOR: All encoders configured successfully
+I (2312) AUDIO_PROCESSOR: 创建录音任务前内存状态 - 堆内存: 5806620 字节, PSRAM: 5611156 字节
+I (2322) AUDIO_PROCESSOR: 创建录音任务 - 栈大小: 4096 字节, 使用外部RAM: 是
+I (2330) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc3710, wk:0x0, run:0]
+I (2338) AUDIO_PROCESSOR: 录音任务创建成功
+I (2343) AUDIO_PROCESSOR: 创建录音任务后内存状态 - 堆内存: 5801732 字节, PSRAM: 5607016 字节
+I (2353) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc3710, wk:0x3c2a71a0, run:0]
+I (2361) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc3710, wk:0x3c2a71a0, run:0]
+I (2370) NEW_DATA_BUS: New ringbuffer:0x3c2a7290, num:2, item_cnt:2048, db:0x3c2a82bc
+I (2378) NEW_DATA_BUS: New ringbuffer:0x3c2a8324, num:1, item_cnt:8192, db:0x3c2aa350
+I (2385) AFE_MANAGER: AFE manager suspend 1
+I (2389) AFE_MANAGER: AFE manager suspend 0
+I (2393) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2a71a0, ctx:0x3c2a5b04, label:ai_afe_open]
+I (2402) ESP_GMF_PORT: ACQ IN, new self payload:0x3c2a71a0, port:0x3c2a6144, el:0x3c2a5b04-ai_afe
+I (2425) AUDIO_PROCESSOR: Audio recorder opened successfully
+I (2425) AUDIO_PROCESSOR: Opening audio feeder...
+I (2425) NEW_DATA_BUS: New ringbuffer:0x3c2aabd4, num:1, item_cnt:8192, db:0x3c2acc00
+I (2438) ESP_GMF_POOL: Registered items on pool:0x3c2aa3b8, audio_feeder_open-1495
+I (2438) ESP_GMF_POOL: EL, Item:0x3c2acd54, H:0x3c2acc58, TAG:aud_dec
+I (2445) ESP_GMF_POOL: EL, Item:0x3c2ace34, H:0x3c2acd64, TAG:aud_ch_cvt
+I (2451) ESP_GMF_POOL: EL, Item:0x3c2acf10, H:0x3c2ace44, TAG:aud_bit_cvt
+I (2458) ESP_GMF_POOL: EL, Item:0x3c2acff4, H:0x3c2acf20, TAG:aud_rate_cvt
+I (2468) AUDIO_PROCESSOR: Configuring PCM decoder
+I (2469) AUDIO_PROCESSOR: All decoders configured successfully
+I (2474) AUDIO_PROCESSOR: 创建播放任务前内存状态 - 堆内存: 5774392 字节, PSRAM: 5581380 字节
+I (2484) AUDIO_PROCESSOR: 创建播放任务 - 栈大小: 24576 字节, 使用外部RAM: 是
+I (2499) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc407c, wk:0x0, run:0]
+I (2500) AUDIO_PROCESSOR: 播放任务创建成功
+I (2505) AUDIO_PROCESSOR: 创建播放任务后内存状态 - 堆内存: 5749020 字节, PSRAM: 5556760 字节
+I (2514) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc407c, wk:0x3c2b35f0, run:0]
+I (2529) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2a7218, ctx:0x3c2a5be0, label:aud_rate_cvt_open]
+I (2533) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3b4c, ctx:0x3c2a5d0c, label:aud_ch_cvt_open]
+I (2542) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3ba8, ctx:0x3c2a5e38, label:aud_bit_cvt_open]
+I (2552) ESP_GMF_AENC: Open, type:PCM, acquire in frame: 640, out frame: 640
+I (2558) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3b4c, ctx:0x3c2a5f84, label:aud_enc_open]
+I (2575) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc407c, wk:0x3c2b35f0, run:0]
+I (2576) AUDIO_PROCESSOR: Audio feeder opened successfully
+W (2581) AUD_SDEC: Not find default parser for 541934416
+I (2586) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b35f0, ctx:0x3c2ad048, label:aud_dec_open]
+I (2595) ESP_GMF_PORT: ACQ IN, new self payload:0x3c2b35f0, port:0x3c2ad544, el:0x3c2ad048-aud_dec
+I (2604) AUDIO_PROCESSOR: Audio playback started successfully
+I (2610) AUDIO_PROCESSOR: Initializing audio render...
+I (2616) ASP_POOL: Dest rate:16000
+I (2618) ASP_POOL: Dest channels:2
+I (2621) ASP_POOL: Dest bits:16
+I (2624) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x0, run:0]
+I (2634) AUDIO_PROCESSOR: Audio prompt opened successfully
+I (2637) AUDIO_PROCESSOR: Starting prompt: file:///spiffs/poweron.mp3, state: 1
+I (2644) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c2bcb04, run:0]
+I (2652) ESP_GMF_FILE: Open, dir:1, uri:file:///spiffs/poweron.mp3
+I (2663) ESP_GMF_FILE: File size: 9504 byte, file position: 0
+I (2663) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcb04, ctx:0x3c2bc4d8, label:aud_dec_open]
+I (2672) ESP_GMF_PORT: ACQ IN, new self payload:0x3c2bcb04, port:0x3c2bca64, el:0x3c2bc4d8-aud_dec
+W (2682) ESP_GMF_ASMP_DEC: Not enough memory for out, need:1152, old: 1024, new: 1152
+I (2690) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcec8, ctx:0x3c2bc5c4, label:aud_rate_cvt_open]
+I (2699) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcfc0, ctx:0x3c2bc718, label:aud_ch_cvt_open]
+I (2708) AUDIO_PROCESSOR: Get info, rate:16000, channels:2, bits:16
+I (2714) AUDIO_PROCESSOR: prompt_event_callback: Get State, 1,ESP_AUD_SIMPLE_PLAYER_RUNNING
+I (2722) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bd01c, ctx:0x3c2bc868, label:aud_bit_cvt_open]
+W (2834) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (3034) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (3341) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (3541) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (3847) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (4047) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (4201) ESP_GMF_FILE: No more data, ret: 0
+I (4246) ESP_GMF_FILE: No more data, ret: 0
+I (4246) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c2bcb3c, job:0x3c2bc4d8-aud_dec_proc]
+I (4248) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c2bceec, job:0x3c2bc5c4-aud_rate_cvt_proc]
+I (4259) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c2bcfe4, job:0x3c2bc718-aud_ch_cvt_proc]
+I (4269) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c2bd058, job:0x3c2bc868-aud_bit_cvt_proc]
+I (4279) ESP_GMF_FILE: CLose, 0x3c2bc9b4, pos = 9504/9504
+I (4284) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bceec, ctx:0x3c2bc4d8, label:aud_dec_close]
+I (4293) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcb3c, ctx:0x3c2bc5c4, label:aud_rate_cvt_close]
+I (4303) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcb60, ctx:0x3c2bc718, label:aud_ch_cvt_close]
+I (4312) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcfc0, ctx:0x3c2bc868, label:aud_bit_cvt_close]
+I (4322) AUDIO_PROCESSOR: prompt_event_callback: Get State, 4,ESP_AUD_SIMPLE_PLAYER_FINISHED
+I (4330) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x0, run:0]
+I (4338) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x0, run:0]
+I (4346) BATTERY_MODULE: 电池管理示例程序启动
+I (4351) BATTERY_MODULE: ADC句柄创建成功
+W (4353) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (4355) main: 初始化系统监控模块
+I (4361) BATTERY: 使用外部ADC句柄
+I (4365) main: 初始化按键处理
+I (4369) BATTERY: 使用Curve Fitting校准方案
+I (4372) BUTTON_HANDLER: 初始化按键处理
+I (4376) BATTERY: ADC校准初始化成功
+I (4381) BUTTON_HANDLER: 按键处理初始化完成
+I (4385) BATTERY: 电池管理器初始化完成，分压系数: 65.00
+I (4389) BUTTON_HANDLER: 按键配置信息:
+I (4395) BATTERY_MODULE: 电池监控任务启动
+I (4399) BUTTON_HANDLER: GPIO38 - 音量增加/子女1拨号
+I (4404) BATTERY_MODULE: ========================================
+I (4409) BUTTON_HANDLER: GPIO39 - 音量减少/子女2拨号
+I (4415) BATTERY_MODULE: ADC原始值: 1082
+I (4420) BUTTON_HANDLER: GPIO40 - 接听/挂断/SOS拨号
+I (4424) BATTERY_MODULE: ADC电压: 62 mV
+I (4429) BUTTON_HANDLER: GPIO4  - 短按:拒接/唤醒, 长按2秒:关机
+I (4433) BATTERY_MODULE: 电池电压: 4090 mV
+I (4440) UART_CMD: 启动串口指令初始化任务（使用内置RAM）...
+I (4444) BATTERY_MODULE: 电池电量: 89%
+I (4451) UART_CMD: 启动前 - 内部RAM剩余: 196135 字节
+I (4454) BATTERY_MODULE: 充电状态: 未充电
+I (4460) UART_CMD: 串口指令初始化任务启动
+I (4460) UART_CMD: 串口指令初始化任务已创建
+I (4469) UART_CMD: 检查初始化状态完成，模块未初始化
+I (4469) BATTERY_MODULE: ========================================
+I (4480) UART_CMD: 判断UART端口类型...
+I (4480) UART_CMD: 结束后 - 内部RAM剩余: 192063 字节
+I (4490) UART_CMD: 检测到UART0，日志系统已初始化TX，尝试安装驱动以支持RX读取
+I (4504) UART_CMD: UART参数结构体配置完成
+I (4508) UART_CMD: 开始安装UAI (4522) UART_CMD: UART参数配置成功
+I (4522) UART_CMD: 开始设置UART引脚...
+I (4522) UART_CMD: 检测到UART0，使用日志系统默认引脚配置，跳过所有引脚配置
+I (4528) UART_CMD: UART引脚设置完成
+I (4532) UART_CMD: 状态变量初始化完成
+I (4536) UART_CMD: === 注册指令成功: xsz_write_sn - 写入SN号到NVS ===
+I (4543) UART_CMD: === 注册指令成功: xsz_read_sn - 从NVS读取SN号 ===
+I (4550) UART_CMD: === 注册指令成功: xsz_clear_wifi - 清除NVS中的WiFi配置信息 ===
+I (4558) UART_CMD: === 注册指令成功: xsz_write_wifi - 写入WiFi名称和密码到NVS ===
+W (4561) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (4567) UART_CMD: === 注册指令成功: xsz_reboot - 重启系统 ===
+I (4573) main: 启动BLUFI初始化任务
+I (4579) UART_CMD: === 注册指令成功: xsz_write_net_mode - 写入网络模式到NVS(0:USB 4G模块, 1:BLUFI任务) ===
+I (4584) pp: pp rom version: e7ae62f
+I (4594) UART_CMD: === 串口指令组件初始化成功 ===
+I (4597) net80211: net80211 rom version: e7ae62f
+I (4603) UART_CMD: 串口指令处理任务已启动
+I (4608) wifi:I (4612) UART_CMD: 支持以下指令:
+wifi driver task: 3fccef5c, prio:23, stack:6656, core=0I (4616) UART_CMD:   xsz_write_sn,<SN号> - 写入SN号到NVS
+
+I (4627) UART_CMD:   xsz_read_sn - 从NVS读取SN号
+I (4631) wifi:I (4632) UART_CMD:   xsz_clear_wifi - 清除NVS中的WiFi配置信息
+wifi firmware version: 0947e8b
+I (4639) UART_CMD:   xsz_write_wifi,<SSID>,<密码> - 写入WiFi名称和密码到NVS
+I (4642) wifi:I (4649) UART_CMD:   xsz_reboot - 重启系统
+wifi certification version: v7.0I (4655) UART_CMD:   xsz_write_net_mode,<模式> - 写入网络模式(0:USB 4G模块, 1:BLUFI任务)
+
+I (4573) SIP_SERVICE_V2: SIP事件队列创建成功
+I (4666) wifi:I (4603) UART_CMD: 串口接收任务开始运行
+config NVS flash: enabled
+I (4679) wifi:config nano formatting: disabled
+I (4683) wifi:Init data frame dynamic rx buffer num: 32
+I (4688) wifi:Init static rx mgmt buffer num: 5
+I (4692) wifi:Init management short buffer num: 32
+I (4697) wifi:Init static tx buffer num: 16
+I (4701) wifi:Init tx cache buffer num: 32
+I (4705) wifi:Init static tx FG buffer num: 2
+I (4709) wifi:Init static rx buffer size: 1600
+I (4713) wifi:Init static rx buffer num: 10
+I (4717) wifi:Init dynamic rx buffer num: 32
+I (4567) main: BLUFI任务创建成功
+I (4721) wifi_init: rx ba win: 6
+I (4727) wifi_init: accept mbox: 6
+I (4730) wifi_init: tcpip mbox: 32
+I (4734) wifi_init: udp mbox: 6
+I (4736) wifi_init: tcp mbox: 6
+I (4739) wifi_init: tcp tx win: 5760
+I (4743) wifi_init: tcp rx win: 5760
+I (4746) wifi_init: tcp mss: 1440
+I (4749) wifi_init: WiFi/LWIP prefer SPIRAM
+I (4753) wifi_init: WiFi IRAM OP enabled
+I (4756) wifi_init: WiFi RX IRAM OP enabled
+I (4761) phy_init: phy_version 711,97bcf0a2,Aug 25 2025,19:04:10
+I (4804) wifi:mode : sta (90:70:69:00:9c:dc)
+I (4805) wifi:enable tsf
+I (4805) blufi_example: WiFi初始化完成，AP+STA双模式已启用
+I (4805) blufi_example: WiFi事件触发: 43
+I (4806) BLUFI_EXAMPLE: BLUFI VERSION 0103
+
+I (4811) blufi_example: WiFi事件触发: 2
+I (4814) BLUFI_EXAMPLE: Flash中未保存WiFi配置
+
+I (4810) main: BLUFI初始化完成，继续启动USB 4G模块
+I (4823) BLE_INIT: BT controller compile version [6cfabcd]
+I (4828) main: 等待4G模块上电稳定: 6849 ms
+I (4834) BLE_INIT: Feature Config, ADV:1, BLE_50:0, DTM:1, SCAN:1, CCA:0, SMP:1, CONNECT:1
+I (4846) BLE_INIT: Bluetooth MAC: 90:70:69:00:9c:de
+I (4861) BLUFI_EXAMPLE: BD ADDR: 90:70:69:00:9c:de
+
+I (4861) BLUFI_EXAMPLE: WiFi未配置，启动等待配网音频播放任务
+
+I (4862) BLUFI_EXAMPLE: BLUFI init finish
+
+W (4866) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (4862) blufi_example: WiFi未配置，播放等待配网音频
+I (4878) AUDIO_PROCESSOR: Starting playback: file:///spiffs/wifi_wait.mp3, state: 0
+I (4886) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2d6d30, run:0]
+I (4894) ESP_GMF_FILE: Open, dir:1, uri:file:///spiffs/wifi_wait.mp3
+I (4925) ESP_GMF_FILE: File size: 9648 byte, file position: 0
+I (4925) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2d6d30, ctx:0x3c2d6738, label:aud_dec_open]
+I (4928) ESP_GMF_PORT: ACQ IN, new self payload:0x3c2d6d30, port:0x3c2d6c8c, el:0x3c2d6738-aud_dec
+W (4939) ESP_GMF_ASMP_DEC: Not enough memory for out, need:1152, old: 1024, new: 1152
+I (4947) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2d82c8, ctx:0x3c2d6814, label:aud_rate_cvt_open]
+I (4955) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2d83a8, ctx:0x3c2d6940, label:aud_ch_cvt_open]
+I (4964) AUDIO_PROCESSOR: Get info, rate:16000, channels:2, bits:16
+I (4970) AUDIO_PROCESSOR: Get State, 1,ESP_AUD_SIMPLE_PLAYER_RUNNING
+I (4976) BRTC_APP: Playback state changed: 1
+I (4980) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2d8404, ctx:0x3c2d6a90, label:aud_bit_cvt_open]
+W (5073) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (5366) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (5566) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (5872) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (6072) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (6376) ESP_GMF_FILE: No more data, ret: 0
+W (6378) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (6451) ESP_GMF_FILE: No more data, ret: 0
+I (6451) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2d6d68, job:0x3c2d6738-aud_dec_proc]
+I (6453) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2d82ec, job:0x3c2d6814-aud_rate_cvt_proc]
+I (6464) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2d83cc, job:0x3c2d6940-aud_ch_cvt_proc]
+I (6474) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2d8440, job:0x3c2d6a90-aud_bit_cvt_proc]
+I (6484) ESP_GMF_FILE: CLose, 0x3c2d6bdc, pos = 9648/9648
+I (6489) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2d82ec, ctx:0x3c2d6738, label:aud_dec_close]
+I (6498) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2d6d68, ctx:0x3c2d6814, label:aud_rate_cvt_close]
+I (6508) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2d6d8c, ctx:0x3c2d6940, label:aud_ch_cvt_close]
+I (6518) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2d83c0, ctx:0x3c2d6a90, label:aud_bit_cvt_close]
+I (6527) AUDIO_PROCESSOR: Get State, 4,ESP_AUD_SIMPLE_PLAYER_FINISHED
+I (6533) BRTC_APP: Playback state changed: 1
+I (6537) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x0, run:0]
+I (6545) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x0, run:0]
+W (6578) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (6884) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (7084) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (7389) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (7589) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (7895) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (8095) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (8401) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (8601) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (8907) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (9107) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (9413) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (9613) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (9919) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (10119) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (10425) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (10490) BATTERY_MODULE: ========================================
+I (10490) BATTERY_MODULE: ADC原始值: 1081
+I (10490) BATTERY_MODULE: ADC电压: 62 mV
+I (10493) BATTERY_MODULE: 电池电压: 4082 mV
+I (10497) BATTERY_MODULE: 电池电量: 89%
+I (10501) BATTERY_MODULE: 充电状态: 未充电
+I (10505) BATTERY_MODULE: ========================================
+W (10625) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (10932) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (11132) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (11437) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (11637) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (11687) main: usb网卡初始化任务创建成功
+I (11687) RNDIS_4G_MODULE: 启动策略: reset_reason=ESP_RST_POWERON，cold_boot_extended_wait=true
+I (11687) main: 等待网络(WiFi/4G)连接...
+W (11689) RNDIS_4G_MODULE: 默认事件循环已存在，跳过创建
+I (11699) USBH_CDC: iot usbh cdc version: 3.0.0
+I (11734) usbh_rndis: IOT USBH RNDIS Version: 0.3.0
+I (11734) iot_eth: IoT ETH Version: 0.2.0
+I (11734) usbh_rndis: USB RNDIS network interface init success
+I (11737) iot_eth.netif_glue: ethernet attached to netif
+I (11742) RNDIS_4G_MODULE: AT指令缓冲区分配成功 - 发送缓冲区:256字节, 响应缓冲区:1024字节, modem_info结构体:320字节
+I (11754) RNDIS_4G_MODULE: [FSM] STATE_POWER_ON - 等待RNDIS就绪
+I (11754) RNDIS_4G_MODULE: IOT_ETH_EVENT_START
+I (11760) RNDIS_4G_MODULE: 冷启动首次RNDIS等待延长到 22000 ms
+W (11944) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (12115) USBH_CDC: New device connected, address: 1
+I (12115) usbh_rndis: RNDIS device found: VID: 2ECC, PID: 3012, IFNUM: 0
+I (12116) cdc_descriptor: Found NOTIF endpoint: 7
+I (12120) cdc_descriptor: Found OUT endpoint: 12
+I (12124) cdc_descriptor: Found IN endpoint: 3
+I (12129) usbh_rndis: Max transfer packets: 1
+I (12132) usbh_rndis: Max transfer size: 1580
+I (12137) usbh_rndis: rndis query OID_GEN_SUPPORTED_LIST success,oid num :28
+W (12144) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (12148) usbh_rndis: rndis set OID_GEN_CURRENT_PACKET_FILTER success
+I (12156) usbh_rndis: rndis set OID_802_3_MULTICAST_LIST success
+I (12162) usbh_rndis: RNDIS connected success
+I (12166) iot_eth: Ethernet link up
+I (12169) RNDIS_4G_MODULE: IOT_ETH_EVENT_CONNECTED
+I (12173) iot_eth.netif_glue: Set MAC Address: AC:0C:29:A3:9B:6D
+W (12451) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (12651) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (12923) RNDIS_4G_MODULE: RNDIS链路和CDC句柄已稳定
+I (12923) RNDIS_4G_MODULE: [FSM] STATE_AT_SYNC - 初始化AT及同步波特率
+I (12924) RNDIS_4G_MODULE: AT init
+I (12927) RNDIS_4G_MODULE: AT parser created successfully
+I (12932) cdc_descriptor: Found NOTIF endpoint: 8
+I (12937) cdc_descriptor: Found OUT endpoint: 10
+I (12941) cdc_descriptor: Found IN endpoint: 1
+I (12946) RNDIS_4G_MODULE: CDC port opened successfully
+I (12950) RNDIS_4G_MODULE: 已注册非请求响应处理回调
+I (12956) RNDIS_4G_MODULE: AT parser started successfully
+W (12956) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (12969) RNDIS_4G_MODULE: AT probe succeeded on attempt 1/15
+I (12974) RNDIS_4G_MODULE: [FSM] STATE_CHECK_SIM - 检查SIM卡状态
+I (12981) RNDIS_4G_MODULE: SIM is ready on attempt 1/20
+I (12984) RNDIS_4G_MODULE: [FSM] STATE_CHECK_NETWORK - 检查网络注册状态
+I (12993) RNDIS_4G_MODULE: Network registered on attempt 1/30, stat=1
+I (12997) RNDIS_4G_MODULE: [FSM] STATE_START_DATACALL - 开始数据拨号
+I (13004) RNDIS_4G_MODULE: Starting data call sequence...
+I (13009) RNDIS_4G_MODULE: Checking signal quality...
+I (13016) RNDIS_4G_MODULE: Signal quality: RSSI=24, BER=99
+I (13019) RNDIS_4G_MODULE: Setting PDP context...
+I (13025) RNDIS_4G_MODULE: AT/SIM/network are ready, starting dialup...
+W (13168) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (13184) RNDIS_4G_MODULE: USB RNDIS GOT_IP: 192.168.0.100
+I (13184) iot_eth.netif_glue: netif "usb_rndis" Got IP Address
+I (13184) iot_eth.netif_glue: ~~~~~~~~~~~
+I (13187) iot_eth.netif_glue: ETHIP:192.168.0.100
+I (13191) iot_eth.netif_glue: ETHMASK:255.255.255.0
+I (13196) iot_eth.netif_glue: ETHGW:192.168.0.1
+I (13200) iot_eth.netif_glue: Main DNS: 192.168.0.1
+I (13205) iot_eth.netif_glue: Backup DNS: 0.0.0.0
+I (13209) iot_eth.netif_glue: ~~~~~~~~~~~
+W (13463) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (13663) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (13969) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (14169) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (14277) BLUFI_EXAMPLE: BLUFI ble connect
+
+W (14475) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (14522) RNDIS_4G_MODULE: Dialup succeeded, reading modem info...
+I (14522) RNDIS_4G_MODULE: 获取4G模块信息...
+I (14524) RNDIS_4G_MODULE: 获取制造商ID成功: CMCC
+I (14528) RNDIS_4G_MODULE: 获取模块ID成功: ML307A
+I (14533) RNDIS_4G_MODULE: 获取修订版本ID成功: ML307A-DSLN-MBRH1S00
+I (14542) RNDIS_4G_MODULE: PDP上下文: +CGDCONT: 1,"IP","CMNET",,0,0,,,,
+
++CGDCONT: 8,"IPV4V6","IMS",,0,0,0,2,1,1
+I (14548) RNDIS_4G_MODULE: 模块信息获取完成
+I (14553) RNDIS_4G_MODULE: Verifying network status after dialup...
+I (14561) RNDIS_4G_MODULE: Post-dial network stat=1
+I (14563) RNDIS_4G_MODULE: 4G dialup flow finished
+I (14568) RNDIS_4G_MODULE: 4G数据拨号指令发送成功，等待获取IP地址...
+I (14576) RNDIS_4G_MODULE: 4G网络已成功获取IP地址
+I (14581) RNDIS_4G_MODULE: 4G初始化成功完成！
+I (14586) RNDIS_4G_MODULE: 测试WiFi外网连通性...
+I (14590) network_manager: 开始测试 [WiFi] 网络接口连通性
+I (14597) network_manager: [WiFi] 网络接口IP: 0.0.0.0
+E (14602) network_manager: [WiFi] 网络接口没有有效IP地址
+W (14608) RNDIS_4G_MODULE: WiFi无外网，切换到4G路由...
+I (14613) network_manager: 正在切换到4G网络...
+I (14618) network_manager: 尝试获取AP网络接口，第 1 次
+I (14624) network_manager: 直接获取失败，尝试通过接口键获取AP网络接口
+I (14632) network_manager: 成功获取AP网络接口
+I (14636) network_manager: 配置AP路由，使连接设备可通过上行链路访问互联网
+I (14645) network_manager: AP网关: 192.168.4.1, 上行链路IP: 192.168.0.100
+I (14652) network_manager: AP路由配置完成，网关和DNS已设置为上行链路IP: 192.168.0.100
+I (14661) network_manager: 已配置AP路由通过4G网络访问互联网
+I (14668) network_manager: [4G] 已成功切换到4G网络
+I (14673) network_manager: 等待3秒让4G网络稳定...
+W (14675) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (14981) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (15085) blufi_example: WiFi未配置，播放等待配网音频
+I (15085) AUDIO_PROCESSOR: Starting playback: file:///spiffs/wifi_wait.mp3, state: 0
+I (15087) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dc098, run:0]
+I (15096) ESP_GMF_FILE: Open, dir:1, uri:file:///spiffs/wifi_wait.mp3
+I (15102) ESP_GMF_FILE: File size: 9648 byte, file position: 0
+I (15107) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc098, ctx:0x3c2d6738, label:aud_dec_open]
+I (15120) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc098, ctx:0x3c2d6814, label:aud_rate_cvt_open]
+I (15127) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc44c, ctx:0x3c2d6940, label:aud_ch_cvt_open]
+I (15136) AUDIO_PROCESSOR: Get info, rate:16000, channels:2, bits:16
+I (15142) AUDIO_PROCESSOR: Get State, 1,ESP_AUD_SIMPLE_PLAYER_RUNNING
+I (15148) BRTC_APP: Playback state changed: 1
+I (15152) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dfa14, ctx:0x3c2d6a90, label:aud_bit_cvt_open]
+W (15181) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (15488) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (15688) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (15994) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (16194) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (16500) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (16511) BATTERY: 检测到充电接入，电压上升 64 mV，变化前电量=89%
+I (16511) BATTERY_MODULE: ========================================
+I (16513) BATTERY_MODULE: ADC原始值: 1094
+I (16517) BATTERY_MODULE: ADC电压: 63 mV
+I (16521) BATTERY_MODULE: 电池电压: 4154 mV
+I (16525) BATTERY_MODULE: 电池电量: 91%
+I (16529) BATTERY_MODULE: 充电状态: 充电中
+I (16534) BATTERY_MODULE: ========================================
+I (16561) ESP_GMF_FILE: No more data, ret: 0
+I (16636) ESP_GMF_FILE: No more data, ret: 0
+I (16636) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dc0bc, job:0x3c2d6738-aud_dec_proc]
+I (16639) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dc368, job:0x3c2d6814-aud_rate_cvt_proc]
+I (16649) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dc484, job:0x3c2d6940-aud_ch_cvt_proc]
+I (16659) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dfa50, job:0x3c2d6a90-aud_bit_cvt_proc]
+I (16669) ESP_GMF_FILE: CLose, 0x3c2d6bdc, pos = 9648/9648
+I (16675) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc0bc, ctx:0x3c2d6738, label:aud_dec_close]
+I (16684) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc368, ctx:0x3c2d6814, label:aud_rate_cvt_close]
+I (16694) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc44c, ctx:0x3c2d6940, label:aud_ch_cvt_close]
+W (16700) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (16703) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc488, ctx:0x3c2d6a90, label:aud_bit_cvt_close]
+I (16720) AUDIO_PROCESSOR: Get State, 4,ESP_AUD_SIMPLE_PLAYER_FINISHED
+I (16726) BRTC_APP: Playback state changed: 1
+I (16730) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x0, run:0]
+I (16738) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x0, run:0]
+W (17006) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (17023) BLUFI_DEBUG: === BLUFI Received Data ===
+I (17023) BLUFI_DEBUG: Total length: 20 bytes
+I (17024) BLUFI_DEBUG: Hex format: 7B 22 67 65 74 77 69 66 69 6C 69 73 74 22 3A 22 31 22 7D 0A 
+I (17029) BLUFI_DEBUG: Text format: {"getwifilist":"1"}.
+I (17034) BLUFI_DEBUG: ===========================
+I (17039) BLUFI_DEBUG: === JSON Data Processing ===
+I (17043) BLUFI_DEBUG: Data ends with 0x0A, trying to parse as JSON
+I (17049) BLUFI_DEBUG: Data length: 20
+I (17053) BLUFI_DEBUG: Data as string: {"getwifilist":"1"}
+
+I (17058) BLUFI_DEBUG: JSON parsing successful
+I (17062) BLUFI_DEBUG: Received JSON data: {"getwifilist":"1"}
+
+I (17068) BLUFI_DEBUG: JSON request for WiFi list detected
+W (17206) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (17512) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (17685) network_manager: 开始测试 [4G] 网络接口连通性
+I (17685) network_manager: [4G] 网络接口IP: 192.168.0.100
+I (17686) network_manager: 正在尝试通过 [4G] 接口连接到 223.5.5.5:443...
+W (17712) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (17723) network_manager: [4G] 网络接口连通性测试成功 (223.5.5.5:443)
+I (17723) network_manager: 4G网络连通性测试通过
+W (18018) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (18218) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (18524) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (18724) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (19031) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (19231) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (19538) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (19738) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (20044) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (20244) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (20549) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (20749) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (21056) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (21256) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (21562) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (21762) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (21881) blufi_example: WiFi事件触发: 1
+I (21883) BLUFI_EXAMPLE: 准备发送WiFi列表JSON数据，长度: 725
+I (21884) BLUFI_EXAMPLE: WiFi列表JSON数据发送完成
+W (21974) BT_BTC: BLUFI直接发送原始数据: type=0x4d, len=725, 无协议头
+
+W (22068) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (22268) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (22499) BT_BTC: 警告: 最后一个分片不包含换行符! 数据结尾: 0x7d
+
+I (22540) BATTERY_MODULE: ========================================
+I (22540) BATTERY_MODULE: ADC原始值: 1095
+I (22540) BATTERY_MODULE: ADC电压: 62 mV
+I (22543) BATTERY_MODULE: 电池电压: 4087 mV
+I (22547) BATTERY_MODULE: 电池电量: 89%
+I (22551) BATTERY_MODULE: 充电状态: 充电中
+I (22555) BATTERY_MODULE: ========================================
+W (22575) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (22775) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (23081) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (23281) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (23586) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (23786) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (24092) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (24292) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (24598) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (24798) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (25104) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (25110) blufi_example: WiFi未配置，播放等待配网音频
+I (25110) AUDIO_PROCESSOR: Starting playback: file:///spiffs/wifi_wait.mp3, state: 0
+I (25113) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dc098, run:0]
+I (25121) ESP_GMF_FILE: Open, dir:1, uri:file:///spiffs/wifi_wait.mp3
+I (25128) ESP_GMF_FILE: File size: 9648 byte, file position: 0
+I (25133) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc098, ctx:0x3c2d6738, label:aud_dec_open]
+I (25146) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc098, ctx:0x3c2d6814, label:aud_rate_cvt_open]
+I (25152) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dfc64, ctx:0x3c2d6940, label:aud_ch_cvt_open]
+I (25162) AUDIO_PROCESSOR: Get info, rate:16000, channels:2, bits:16
+I (25168) AUDIO_PROCESSOR: Get State, 1,ESP_AUD_SIMPLE_PLAYER_RUNNING
+I (25174) BRTC_APP: Playback state changed: 1
+I (25178) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dfcd4, ctx:0x3c2d6a90, label:aud_bit_cvt_open]
+W (25304) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (25611) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (25811) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (26118) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (26318) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (26581) ESP_GMF_FILE: No more data, ret: 0
+W (26624) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (26656) ESP_GMF_FILE: No more data, ret: 0
+I (26656) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dc0bc, job:0x3c2d6738-aud_dec_proc]
+I (26659) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dfb80, job:0x3c2d6814-aud_rate_cvt_proc]
+I (26669) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dfc9c, job:0x3c2d6940-aud_ch_cvt_proc]
+I (26679) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x3c2dc2b4, job:0x3c2d6a90-aud_bit_cvt_proc]
+I (26689) ESP_GMF_FILE: CLose, 0x3c2d6bdc, pos = 9648/9648
+I (26695) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc650, ctx:0x3c2d6738, label:aud_dec_close]
+I (26704) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc0bc, ctx:0x3c2d6814, label:aud_rate_cvt_close]
+I (26714) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc2cc, ctx:0x3c2d6940, label:aud_ch_cvt_close]
+I (26723) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dfb98, ctx:0x3c2d6a90, label:aud_bit_cvt_close]
+I (26733) AUDIO_PROCESSOR: Get State, 4,ESP_AUD_SIMPLE_PLAYER_FINISHED
+I (26739) BRTC_APP: Playback state changed: 1
+I (26743) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x0, run:0]
+I (26751) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcbff9c-0x3fcbff9c, wk:0x0, run:0]
+W (26824) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (27130) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (27330) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (27635) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (27835) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (28141) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (28188) BLUFI_DEBUG: === BLUFI Received Data ===
+I (28188) BLUFI_DEBUG: Total length: 103 bytes
+I (28189) BLUFI_DEBUG: Hex format: 7B 22 70 61 73 73 77 6F 72 64 22 3A 22 31 34 37 32 35 38 38 38 38 22 2C 22 73 73 69 64 22 3A 22 4F 50 50 4F 20 46 69 6E 64 20 58 39 20 50 72 6F 20 37 41 34 43 22 2C 22 74 69 6D 65 7A 6F 6E 65 22 3A 22 47 4D 54 2B 30 38 3A 30 30 22 2C 22 70 72 6F 64 75 63 74 43 6F 64 65 22 3A 22 61 62 6F 78 5F 69 6D 22 7D 0A 
+I (28216) BLUFI_DEBUG: Text format: {"password":"147258888","ssid":"OPPO Find X9 Pro 7A4C","timezone":"GMT+08:00","productCode":"abox_im"}.
+I (28228) BLUFI_DEBUG: ===========================
+I (28232) BLUFI_DEBUG: === JSON Data Processing ===
+I (28237) BLUFI_DEBUG: Data ends with 0x0A, trying to parse as JSON
+I (28243) BLUFI_DEBUG: Data length: 103
+I (28246) BLUFI_DEBUG: Data as string: {"password":"147258888","ssid":"OPPO Find X9 Pro 7A4C","timezone":"GMT+08:00","productCode":"abox_im"}
+
+I (28259) BLUFI_DEBUG: JSON parsing successful
+I (28263) BLUFI_DEBUG: Received JSON data: {"password":"147258888","ssid":"OPPO Find X9 Pro 7A4C","timezone":"GMT+08:00","productCode":"abox_im"}
+
+I (28276) BLUFI_DEBUG: JSON WiFi connection request detected
+I (28281) BLUFI_DEBUG: SSID: OPPO Find X9 Pro 7A4C, Password: 147258888
+I (28288) BLUFI_DEBUG: JSON processing: Auto-triggering WiFi connection request
+I (28302) BLUFI_EXAMPLE: Recv STA SSID OPPO Find X9 Pro 7A4C
+
+I (28309) BLUFI_EXAMPLE: Recv STA PASSWORD 147258888
+
+I (28309) BLUFI_EXAMPLE: 已请求停止等待配网音频播放任务
+
+I (28312) BLUFI_EXAMPLE: BLUFI request wifi connect to AP
+
+W (28341) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (28343) AUDIO_PROCESSOR: Closing audio recorder...
+I (28343) AFE_MANAGER: AFE manager suspend 1
+I (28448) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc6f4, ctx:0x3c2a5b04, label:ai_afe_close]
+I (28448) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3b70, ctx:0x3c2a5be0, label:aud_rate_cvt_close]
+I (28456) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2a726c, ctx:0x3c2a5d0c, label:aud_ch_cvt_close]
+I (28465) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2a71ec, ctx:0x3c2a5e38, label:aud_bit_cvt_close]
+I (28475) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc0b0, ctx:0x3c2a5f84, label:aud_enc_close]
+I (28484) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc3710, wk:0x0, run:0]
+I (28493) AFE: exit
+I (28494) AFE_MANAGER: AFE manager destroy
+I (28498) AUDIO_PROCESSOR: Audio recorder closed successfully
+I (28504) AUDIO_PROCESSOR: Closing audio feeder...
+I (28508) AUDIO_PROCESSOR: Stopping audio feeder...
+I (28513) ESP_GMF_TASK: One times job is complete, del[wk:0x3c26bf04, ctx:0x3c2ad048, label:aud_dec_close]
+I (28522) ESP_GMF_TASK: One times job is complete, del[wk:0x3c26bf3c, ctx:0x3c2ad144, label:aud_ch_cvt_close]
+I (28532) ESP_GMF_TASK: One times job is complete, del[wk:0x3c26bf78, ctx:0x3c2ad294, label:aud_bit_cvt_close]
+I (28542) ESP_GMF_TASK: One times job is complete, del[wk:0x3c26bfb4, ctx:0x3c2ad3e0, label:aud_rate_cvt_close]
+I (28551) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc407c, wk:0x0, run:0]
+I (28551) AUDIO_PROCESSOR: Audio feeder stopped successfully
+I (28559) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc407c, wk:0x0, run:0]
+I (28565) BATTERY: 检测到充电拔出，电压下降 69 mV，变化前电量=89%
+I (28573) AUDIO_PROCESSOR: Audio playback closed successfully
+I (28586) AUDIO_PROCESSOR: Opening audio recorder...
+I (28591) ESP_GMF_POOL: Registered items on pool:0x3c26bb3c, audio_recorder_open-1275
+I (28598) ESP_GMF_POOL: EL, Item:0x3c26bc2c, H:0x3c26bb50, TAG:aud_enc
+I (28604) ESP_GMF_POOL: EL, Item:0x3c26bd0c, H:0x3c26bc3c, TAG:aud_ch_cvt
+I (28611) ESP_GMF_POOL: EL, Item:0x3c26bde8, H:0x3c26bd1c, TAG:aud_bit_cvt
+I (28617) ESP_GMF_POOL: EL, Item:0x3c26becc, H:0x3c26bdf8, TAG:aud_rate_cvt
+I (28624) AFE_CONFIG: Set Noise Suppression Model: nsnet2
+I (28629) AFE_CONFIG: Set WakeNet Model: wn9_xiaoluxiaolu_tts2
+
+/********** General AFE (Audio Front End) Parameter **********/
+pcm_config.total_ch_num: 2
+pcm_config.mic_num: 1: [ ch0 ]
+pcm_config.ref_num: 1: [ ch1 ]
+pcm_config.sample_rate: 16000
+afe_type: SR
+afe_mode: LOW COST
+afe_perferred_core: 0
+afe_perferred_priority: 5
+afe_ringbuf_size: 50
+memory_alloc_mode: 3
+afe_linear_gain: 1.0
+debug_init: false
+fixed_first_channel: false
+
+/********** AEC (Acoustic Echo Cancellation) **********/
+aec_init: true
+aec mode: SR_LOW_COST
+aec_filter_length: 4
+
+/********** SE (Speech Enhancement, Microphone Array Processing) **********/
+se_init: false, model: BSS
+
+/********** NS (Noise Suppression) **********/
+ns_init: false
+ns model name: nsnet2
+
+/********** VAD (Voice Activity Detection) **********/
+vad_init: false
+vad_mode: 0
+vad_model_name: NULL
+vad_min_speech_ms: 128
+vad_min_noise_ms: 1000
+vad_delay_ms: 128
+vad_mute_playback: false
+vad_enable_channel_trigger: false
+
+/********** WakeNet (Wake Word Engine) **********/
+wakenet_init: false
+wakenet_model_name: wn9_xiaoluxiaolu_tts2
+wakenet_model_name_2: NULL
+wakenet_mode: 0
+
+/********** AGC (Automatic Gain Control) **********/
+agc_init: false
+agc_mode: WAKENET
+agc_compression_gain_db: 9
+agc_target_level_dbfs: 9
+
+/**************************************************/
+I (28792) AFE: AFE Version: (1MIC_V250121)
+I (28792) AFE: Input PCM Config: total 2 channels(1 microphone, 1 playback), sample rate:16000
+I (28793) AFE: AFE Pipeline: [input] -> |AEC(SR_LOW_COST)| -> [output]
+I (28800) AFE_MANAGER: Feed task, ch 2, chunk 512, buf size 2048
+I (28800) GMF_AFE: Create AFE, ai_afe-0x3c2b4a70
+I (28809) GMF_AFE: Create AFE, ai_afe-0x3c2b4b4c
+I (28813) GMF_AFE: New an object,ai_afe-0x3c2b4b4c
+I (28818) AUDIO_PROCESSOR: Configuring PCM encoder
+I (28822) AUDIO_PROCESSOR: All encoders configured successfully
+I (28828) AUDIO_PROCESSOR: 创建录音任务前内存状态 - 堆内存: 5475000 字节, PSRAM: 5441724 字节
+I (28838) AUDIO_PROCESSOR: 创建录音任务 - 栈大小: 4096 字节, 使用外部RAM: 是
+I (28846) AUDIO_PROCESSOR: 录音任务创建成功
+I (28846) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc3a30, wk:0x0, run:0]
+I (28850) AUDIO_PROCESSOR: 创建录音任务后内存状态 - 堆内存: 5470100 字节, PSRAM: 5437572 字节
+I (28869) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc3a30, wk:0x3c2dc6f4, run:0]
+I (28869) BLUFI_EXAMPLE: 设备已配网且4G网络连接成功
+
+I (28877) AUDIO_PROCESSOR: Audio recorder opened successfully
+I (28878) NEW_DATA_BUS: New ringbuffer:0x3c2dc308, num:2, item_cnt:2048, db:0x3c2dc330
+I (28889) AUDIO_PROCESSOR: Opening audio feeder...
+I (28897) NEW_DATA_BUS: New ringbuffer:0x3c2dc398, num:1, item_cnt:8192, db:0x3c2dc3c0
+I (28901) NEW_DATA_BUS: New ringbuffer:0x3c2dc428, num:1, item_cnt:8192, db:0x3c2b47d4
+I (28909) AFE_MANAGER: AFE manager suspend 1
+I (28916) ESP_GMF_POOL: Registered items on pool:0x3c2dc460, audio_feeder_open-1495
+I (28920) AFE_MANAGER: AFE manager suspend 0
+I (28927) ESP_GMF_POOL: EL, Item:0x3c2b4918, H:0x3c2b482c, TAG:aud_dec
+I (28932) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc6f4, ctx:0x3c2b4b4c, label:ai_afe_open]
+I (28938) ESP_GMF_POOL: EL, Item:0x3c2b49f8, H:0x3c2b4928, TAG:aud_ch_cvt
+I (28947) ESP_GMF_PORT: ACQ IN, new self payload:0x3c2dc6f4, port:0x3c2dc250, el:0x3c2b4b4c-ai_afe
+I (28953) ESP_GMF_POOL: EL, Item:0x3c2b4a28, H:0x3c2bc210, TAG:aud_bit_cvt
+I (28969) ESP_GMF_POOL: EL, Item:0x3c2bc37c, H:0x3c2bc2bc, TAG:aud_rate_cvt
+I (28976) AUDIO_PROCESSOR: Configuring PCM decoder
+I (28980) AUDIO_PROCESSOR: All decoders configured successfully
+I (28986) AUDIO_PROCESSOR: 创建播放任务前内存状态 - 堆内存: 5442728 字节, PSRAM: 5411904 字节
+I (28995) AUDIO_PROCESSOR: 创建播放任务 - 栈大小: 24576 字节, 使用外部RAM: 是
+I (29004) AUDIO_PROCESSOR: 播放任务创建成功
+I (29004) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcf0998, wk:0x0, run:0]
+I (29008) AUDIO_PROCESSOR: 创建播放任务后内存状态 - 堆内存: 5417348 字节, PSRAM: 5387284 字节
+I (29026) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcf0998, wk:0x3c298b68, run:0]
+I (29026) AUDIO_PROCESSOR: Audio feeder opened successfully
+I (29035) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcf0998, wk:0x3c298b68, run:0]
+I (28889) BLUFI_EXAMPLE: 网络连接等待完成
+
+I (29049) AUDIO_PROCESSOR: Audio playback started successfully
+I (29049) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2dc290, ctx:0x3c2dfc58, label:aud_rate_cvt_open]
+I (29069) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298d34, ctx:0x3c2b33f4, label:aud_ch_cvt_open]
+I (29078) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298d90, ctx:0x3c2b34a0, label:aud_bit_cvt_open]
+I (29088) ESP_GMF_AENC: Open, type:PCM, acquire in frame: 640, out frame: 640
+I (29095) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298d34, ctx:0x3c2b354c, label:aud_enc_open]
+W (29049) AUD_SDEC: Not find default parser for 541934416
+I (28800) BATTERY_MODULE: ========================================
+I (29111) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298b68, ctx:0x3c2a6de4, label:aud_dec_open]
+I (29115) BATTERY_MODULE: ADC原始值: 1094
+I (29124) ESP_GMF_PORT: ACQ IN, new self payload:0x3c298b68, port:0x3c298ad0, el:0x3c2a6de4-aud_dec
+I (29128) BATTERY_MODULE: ADC电压: 62 mV
+I (29141) BATTERY_MODULE: 电池电压: 4085 mV
+I (29145) BATTERY_MODULE: 电池电量: 87%
+I (29149) BATTERY_MODULE: 充电状态: 未充电
+I (29154) BATTERY_MODULE: ========================================
+W (29383) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (29583) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (29693) BLUFI_EXAMPLE: 设备已配网且4G网络连接成功
+
+I (29693) main: 网络已连接
+I (29693) main: 初始化网络管理器
+I (29694) network_manager: 初始化网络管理器
+I (29698) network_manager: 检测到WiFi已初始化，模式: 1
+I (29704) network_manager: 初始化NTP时间同步...
+I (29709) network_manager: NTP初始化完成，开始同步时间...
+I (29715) network_manager: 网络智能监控任务已启动，将自动切换最优网络...
+I (29724) network_manager: 网络智能监控任务创建成功
+I (29729) main: 初始化联系人管理器，从Flash加载通讯录
+I (29735) contact_manager: 从Flash加载通讯录
+W (29740) contact_manager: 打开NVS命名空间失败，使用默认联系人数据
+I (29747) contact_manager: 联系人管理器初始化完成，共加载了 2 个联系人
+I (29755) main: 初始化来电管理器
+I (29759) CALL_MANAGER: 初始化来电管理器
+I (29763) CALL_MANAGER: 来电管理器初始化完成
+I (29768) main: 从Flash初始化按键绑定号码到PSRAM
+E (29773) mqtt_example: NVS打开失败，错误代码: 4354
+W (29779) main: 子女1绑定号码为空或读取失败
+E (29784) mqtt_example: NVS打开失败，错误代码: 4354
+W (29789) main: 子女2绑定号码为空或读取失败
+E (29794) mqtt_example: NVS打开失败，错误代码: 4354
+W (29800) main: SOS绑定号码为空或读取失败
+I (29804) main: 等待有效的外网连接以启动云服务...
+I (29810) network_manager: 开始测试 [Active] 网络连通性
+I (29816) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (29822) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (29828) network_manager: [Active] 网络接口没有有效IP地址
+W (29890) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (30090) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (30397) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (30597) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (30727) wifi:new:<11,0>, old:<1,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+I (30727) wifi:state: init -> auth (0xb0)
+I (30728) blufi_example: WiFi事件触发: 43
+I (30836) network_manager: 开始测试 [Active] 网络连通性
+I (30836) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (30840) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (30843) network_manager: [Active] 网络接口没有有效IP地址
+W (30904) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (31104) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (31280) wifi:state: auth -> init (0x600)
+I (31285) wifi:Coexist: Wi-Fi connect fail, apply reconnect coex policy
+
+I (31285) wifi:new:<11,0>, old:<11,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+I (31289) blufi_example: WiFi事件触发: 5
+I (31292) blufi_example: WiFi断开连接事件触发
+I (31297) blufi_example: 断开原因代码: 202
+E (31301) blufi_example: 检测到WiFi密码错误或认证失败！
+I (31307) blufi_example: WiFi重试次数: 10
+I (31311) AUDIO_PROCESSOR: Starting prompt: file:///spiffs/wifierror.mp3, state: 1
+I (31319) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c298a00, run:0]
+I (31327) ESP_GMF_FILE: Open, dir:1, uri:file:///spiffs/wifierror.mp3
+I (31384) ESP_GMF_FILE: File size: 12141 byte, file position: 0
+I (31384) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298a00, ctx:0x3c2bc4d8, label:aud_dec_open]
+I (31391) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298a00, ctx:0x3c2bc5c4, label:aud_rate_cvt_open]
+I (31398) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298010, ctx:0x3c2bc718, label:aud_ch_cvt_open]
+I (31407) AUDIO_PROCESSOR: Get info, rate:16000, channels:2, bits:16
+I (31413) AUDIO_PROCESSOR: prompt_event_callback: Get State, 1,ESP_AUD_SIMPLE_PLAYER_RUNNING
+I (31421) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298a00, ctx:0x3c2bc868, label:aud_bit_cvt_open]
+W (31473) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (31665) system_monitor: 内存减少 最小值:5369036
+W (31673) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (31850) network_manager: 开始测试 [Active] 网络连通性
+I (31850) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (31851) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (31856) network_manager: [Active] 网络接口没有有效IP地址
+W (31980) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (32180) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (32487) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (32687) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (32862) network_manager: 开始测试 [Active] 网络连通性
+I (32862) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (32863) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (32868) network_manager: [Active] 网络接口没有有效IP地址
+W (32994) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (33194) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (33501) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (33701) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (33874) network_manager: 开始测试 [Active] 网络连通性
+I (33874) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (33875) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (33880) network_manager: [Active] 网络接口没有有效IP地址
+W (34008) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (34208) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (34231) ESP_GMF_FILE: No more data, ret: 0
+I (34381) ESP_GMF_FILE: No more data, ret: 0
+I (34381) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c2991b8, job:0x3c2bc4d8-aud_dec_proc]
+I (34384) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c29923c, job:0x3c2bc5c4-aud_rate_cvt_proc]
+I (34394) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c298034, job:0x3c2bc718-aud_ch_cvt_proc]
+I (34404) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c298084, job:0x3c2bc868-aud_bit_cvt_proc]
+I (34414) ESP_GMF_FILE: CLose, 0x3c2bc9b4, pos = 12141/12141
+I (34420) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298a00, ctx:0x3c2bc4d8, label:aud_dec_close]
+I (34429) ESP_GMF_TASK: One times job is complete, del[wk:0x3c29923c, ctx:0x3c2bc5c4, label:aud_rate_cvt_close]
+I (34439) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2991b8, ctx:0x3c2bc718, label:aud_ch_cvt_close]
+I (34448) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298028, ctx:0x3c2bc868, label:aud_bit_cvt_close]
+I (34458) AUDIO_PROCESSOR: prompt_event_callback: Get State, 4,ESP_AUD_SIMPLE_PLAYER_FINISHED
+I (34466) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x0, run:0]
+I (34474) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x0, run:0]
+W (34482) blufi_example: 因密码错误，即将清除无效WiFi配置并拉起蓝牙...
+I (34496) BLUFI_EXAMPLE: 发送连接失败JSON给APP (type=1)
+
+W (34496) BT_BTC: BLUFI直接发送原始数据: type=0x4d, len=32, 无协议头
+
+W (34515) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (34715) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (34886) network_manager: 开始测试 [Active] 网络连通性
+I (34886) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (34887) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (34892) network_manager: [Active] 网络接口没有有效IP地址
+W (35022) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (35159) BATTERY: 检测到充电接入，电压上升 68 mV，变化前电量=87%
+I (35159) BATTERY_MODULE: ========================================
+I (35161) BATTERY_MODULE: ADC原始值: 1095
+I (35165) BATTERY_MODULE: ADC电压: 63 mV
+I (35169) BATTERY_MODULE: 电池电压: 4155 mV
+I (35173) BATTERY_MODULE: 电池电量: 89%
+I (35177) BATTERY_MODULE: 充电状态: 充电中
+I (35182) BATTERY_MODULE: ========================================
+W (35222) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (35529) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (35729) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (35898) network_manager: 开始测试 [Active] 网络连通性
+I (35898) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (35899) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (35904) network_manager: [Active] 网络接口没有有效IP地址
+W (36034) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (36234) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (36541) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (36741) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (36910) network_manager: 开始测试 [Active] 网络连通性
+I (36910) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (36911) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (36916) network_manager: [Active] 网络接口没有有效IP地址
+W (37046) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (37246) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (37553) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (37753) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (37922) network_manager: 开始测试 [Active] 网络连通性
+I (37922) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (37923) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (37928) network_manager: [Active] 网络接口没有有效IP地址
+W (38059) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (38259) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (38565) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (38765) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (38934) network_manager: 开始测试 [Active] 网络连通性
+I (38934) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (38935) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (38940) network_manager: [Active] 网络接口没有有效IP地址
+W (39072) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (39272) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (39578) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (39723) network_manager: WiFi已断开连接或失去IP地址
+W (39723) network_manager: 检测到WiFi异常，累计失败次数: 1
+W (39723) network_manager: [WiFi] 极速检测失败，紧急切换到4G路由兜底！
+I (39731) AUDIO_PROCESSOR: Starting prompt: file:///spiffs/networkchange.mp3, state: 1
+I (39739) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c298a04, run:0]
+I (39747) ESP_GMF_FILE: Open, dir:1, uri:file:///spiffs/networkchange.mp3
+I (39777) ESP_GMF_FILE: File size: 11277 byte, file position: 0
+I (39777) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298a04, ctx:0x3c2bc4d8, label:aud_dec_open]
+W (39778) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (39784) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298a04, ctx:0x3c2bc5c4, label:aud_rate_cvt_open]
+I (39798) ESP_GMF_TASK: One times job is complete, del[wk:0x3c29965c, ctx:0x3c2bc718, label:aud_ch_cvt_open]
+I (39807) AUDIO_PROCESSOR: Get info, rate:16000, channels:2, bits:16
+I (39813) AUDIO_PROCESSOR: prompt_event_callback: Get State, 1,ESP_AUD_SIMPLE_PLAYER_RUNNING
+I (39821) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298048, ctx:0x3c2bc868, label:aud_bit_cvt_open]
+I (39946) network_manager: 开始测试 [Active] 网络连通性
+I (39946) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (39947) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (39952) network_manager: [Active] 网络接口没有有效IP地址
+W (40084) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (40284) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (40591) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (40791) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (40958) network_manager: 开始测试 [Active] 网络连通性
+I (40958) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (40959) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (40964) network_manager: [Active] 网络接口没有有效IP地址
+W (41098) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (41188) BATTERY_MODULE: ========================================
+I (41188) BATTERY_MODULE: ADC原始值: 1093
+I (41188) BATTERY_MODULE: ADC电压: 62 mV
+I (41191) BATTERY_MODULE: 电池电压: 4082 mV
+I (41195) BATTERY_MODULE: 电池电量: 87%
+I (41199) BATTERY_MODULE: 充电状态: 充电中
+I (41203) BATTERY_MODULE: ========================================
+W (41298) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (41605) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (41805) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (41970) network_manager: 开始测试 [Active] 网络连通性
+I (41970) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (41971) network_manager: [Active] 网络接口IP: 0.0.0.0
+E (41976) network_manager: [Active] 网络接口没有有效IP地址
+W (42112) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (42312) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (42496) ESP_GMF_FILE: No more data, ret: 0
+I (42571) ESP_GMF_FILE: No more data, ret: 0
+I (42571) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c2991b8, job:0x3c2bc4d8-aud_dec_proc]
+I (42574) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c299588, job:0x3c2bc5c4-aud_rate_cvt_proc]
+I (42584) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c298010, job:0x3c2bc718-aud_ch_cvt_proc]
+I (42594) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x3c29806c, job:0x3c2bc868-aud_bit_cvt_proc]
+I (42604) ESP_GMF_FILE: CLose, 0x3c2bc9b4, pos = 11277/11277
+I (42610) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2991b8, ctx:0x3c2bc4d8, label:aud_dec_close]
+I (42619) ESP_GMF_TASK: One times job is complete, del[wk:0x3c29966c, ctx:0x3c2bc5c4, label:aud_rate_cvt_close]
+W (42619) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (42629) ESP_GMF_TASK: One times job is complete, del[wk:0x3c299588, ctx:0x3c2bc718, label:aud_ch_cvt_close]
+I (42645) ESP_GMF_TASK: One times job is complete, del[wk:0x3c298010, ctx:0x3c2bc868, label:aud_bit_cvt_close]
+I (42655) AUDIO_PROCESSOR: prompt_event_callback: Get State, 4,ESP_AUD_SIMPLE_PLAYER_FINISHED
+I (42663) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x0, run:0]
+I (42663) network_manager: 正在切换到4G网络...
+I (42671) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4914-0x3fcc4914, wk:0x0, run:0]
+I (42676) network_manager: 尝试获取AP网络接口，第 1 次
+I (42689) network_manager: 直接获取失败，尝试通过接口键获取AP网络接口
+I (42697) network_manager: 成功获取AP网络接口
+I (42702) network_manager: 配置AP路由，使连接设备可通过上行链路访问互联网
+I (42710) network_manager: AP网关: 192.168.4.1, 上行链路IP: 192.168.0.100
+I (42718) network_manager: AP路由配置完成，网关和DNS已设置为上行链路IP: 192.168.0.100
+I (42726) network_manager: 已配置AP路由通过4G网络访问互联网
+I (42733) network_manager: [4G] 已成功切换到4G网络
+I (42738) network_manager: 等待3秒让4G网络稳定...
+W (42835) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (42982) network_manager: 开始测试 [Active] 网络连通性
+I (42982) network_manager: 当前网络状态 - 4G: 活动, WiFi: 非活动
+I (42983) network_manager: [Active] 网络接口IP: 192.168.0.100
+I (42989) network_manager: 正在尝试连接到 223.5.5.5:53...
+I (43118) network_manager: [Active] 网络连通性测试成功，已成功连接到 223.5.5.5:53
+I (43118) main: 外网连接已就绪，继续启动网络服务
+I (43121) main: 启动OTA任务前可用内存: 5399000 字节
+W (43126) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (43127) ota_lib: OTA库初始化开始
+I (43138) ota_lib: SHA-256 for bootloader:  c559bb1909c324b0f104f47756e562a496c9213c265a25753f86ea907bd5dcfe
+I (43230) ota_lib: SHA-256 for current firmware:  d57969fc0c766f43d83e2cd7ee475c17f36bc954b710c2ca2b6789eb1c93e4e6
+I (43230) ota_lib: OTA信号量创建成功
+I (43233) ota_lib: 启动OTA任务（使用内部RAM）...
+I (43238) ota_lib: 启动前 - 内部RAM剩余: 25419 字节
+I (43244) ota_lib: 启动前 - PSRAM剩余: 5373648 字节
+I (43249) ota_lib: OTA任务已启动，等待手动触发升级
+I (43255) ota_lib: 内部RAM总大小: 296259 字节
+I (43259) ota_lib: 内部RAM剩余: 21347 字节
+I (43264) ota_lib: PSRAM剩余: 5373648 字节
+I (43268) ota_lib: 启动后 - 内部RAM剩余: 21347 字节
+I (43273) ota_lib: OTA任务已创建成功
+I (43277) main: 启动OTA任务后可用内存: 5394964 字节
+I (43283) main: 初始化百度RTC引擎前可用内存: 5394964 字节
+W (43333) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (43633) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (43833) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (44032) BLUFI_DEBUG: === BLUFI Received Data ===
+I (44032) BLUFI_DEBUG: Total length: 102 bytes
+I (44033) BLUFI_DEBUG: Hex format: 7B 22 70 61 73 73 77 6F 72 64 22 3A 22 31 34 37 32 35 38 38 38 22 2C 22 73 73 69 64 22 3A 22 4F 50 50 4F 20 46 69 6E 64 20 58 39 20 50 72 6F 20 37 41 34 43 22 2C 22 74 69 6D 65 7A 6F 6E 65 22 3A 22 47 4D 54 2B 30 38 3A 30 30 22 2C 22 70 72 6F 64 75 63 74 43 6F 64 65 22 3A 22 61 62 6F 78 5F 69 6D 22 7D 0A 
+I (44059) BLUFI_DEBUG: Text format: {"password":"14725888","ssid":"OPPO Find X9 Pro 7A4C","timezone":"GMT+08:00","productCode":"abox_im"}.
+I (44071) BLUFI_DEBUG: ===========================
+I (44076) BLUFI_DEBUG: === JSON Data Processing ===
+I (44080) BLUFI_DEBUG: Data ends with 0x0A, trying to parse as JSON
+I (44086) BLUFI_DEBUG: Data length: 102
+I (44090) BLUFI_DEBUG: Data as string: {"password":"14725888","ssid":"OPPO Find X9 Pro 7A4C","timezone":"GMT+08:00","productCode":"abox_im"}
+
+I (44102) BLUFI_DEBUG: JSON parsing successful
+I (44106) BLUFI_DEBUG: Received JSON data: {"password":"14725888","ssid":"OPPO Find X9 Pro 7A4C","timezone":"GMT+08:00","productCode":"abox_im"}
+
+I (44119) BLUFI_DEBUG: JSON WiFi connection request detected
+I (44125) BLUFI_DEBUG: SSID: OPPO Find X9 Pro 7A4C, Password: 14725888
+I (44131) BLUFI_DEBUG: JSON processing: Auto-triggering WiFi connection request
+W (44139) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (44148) BLUFI_EXAMPLE: Recv STA SSID OPPO Find X9 Pro 7A4C
+
+I (44172) BLUFI_EXAMPLE: Recv STA PASSWORD 14725888
+
+I (44172) BLUFI_EXAMPLE: BLUFI request wifi connect to AP
+
+I (44185) wifi:new:<11,0>, old:<11,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+I (44185) wifi:state: init -> auth (0xb0)
+W (44345) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (44646) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (44717) wifi:state: auth -> assoc (0x0)
+I (44785) wifi:state: assoc -> run (0x10)
+W (44846) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (44851) wifi:connected with OPPO Find X9 Pro 7A4C, aid = 3, channel 11, BW20, bssid = ea:e5:04:56:7d:c0
+I (44851) wifi:security: WPA3-SAE HUNT_AND_PECK, phy: bgn, rssi: -35, cipher(pairwise:0x3, group:0x3), pmf:1
+I (44865) wifi:pm start, type: 1
+
+I (44865) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (44872) wifi:set rx beacon pti, rx_bcn_pti: 14, bcn_timeout: 25000, mt_pti: 14, mt_time: 10000
+I (44881) blufi_example: WiFi事件触发: 4
+I (44988) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us
+I (44988) wifi:AP's beacon interval = 102400 us, DTIM period = 2
+I (45065) wifi:<ba-add>idx:0 (ifx:0, ea:e5:04:56:7d:c0), tid:0, ssn:3, winSize:64
+W (45153) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (45289) BLUFI_EXAMPLE: 设备已配网且4G网络连接成功
+
+E (45289) UART_CMD: NVS命名空间打开失败: ESP_ERR_NVS_NOT_FOUND
+W (45290) BRTC_APP: 无法从flash读取SN码，使用默认用户ID
+I (45296) BRTC_APP: 开始OTA检查，SN: unknown, 版本: 100003
+I (45301) http_ota: 启动OTA检查任务（任务栈在PSRAM，TCB在内部RAM）...
+I (45309) http_ota: 启动前 - 内部RAM剩余: 20199 字节
+I (45314) http_ota: 启动前 - PSRAM剩余: 5371808 字节
+I (45320) http_ota: 启动后 - 内部RAM剩余: 20327 字节
+I (45325) http_ota: 已从PSRAM分配任务栈: 31888 字节
+I (45331) http_ota: OTA检查任务启动
+I (45338) http_ota: OTA检查任务已创建，等待完成...
+W (45353) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (45660) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (45743) network_manager: 开始测试 [4G] 网络接口连通性
+I (45743) network_manager: [4G] 网络接口IP: 192.168.0.100
+I (45743) network_manager: 正在尝试通过 [4G] 接口连接到 223.5.5.5:443...
+I (45802) network_manager: [4G] 网络接口连通性测试成功 (223.5.5.5:443)
+I (45802) network_manager: 4G网络连通性测试通过
+W (45860) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (46162) esp_netif_handlers: sta ip: 10.231.194.225, mask: 255.255.255.0, gw: 10.231.194.21
+W (46162) blufi_example: 打开NVS失败: ESP_ERR_NVS_NOT_FOUND
+I (46164) BLUFI_EXAMPLE: NVS中未找到SN码，使用原始JSON格式
+W (46167) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (46171) BT_BTC: BLUFI直接发送原始数据: type=0x4d, len=32, 无协议头
+
+W (46377) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (46674) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (46818) http_ota: 连接成功
+I (46818) http_ota: 执行SSL/TLS握手...
+W (46874) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (47182) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (47382) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (47411) BATTERY: 检测到充电拔出，电压下降 65 mV，变化前电量=87%
+I (47411) BATTERY_MODULE: ========================================
+I (47413) BATTERY_MODULE: ADC原始值: 1096
+I (47415) esp-x509-crt-bundle: Certificate validated
+I (47490) BATTERY_MODULE: ADC电压: 62 mV
+I (47490) BATTERY_MODULE: 电池电压: 4090 mV
+I (47490) BATTERY_MODULE: 电池电量: 88%
+I (47491) BATTERY_MODULE: 充电状态: 未充电
+I (47495) BATTERY_MODULE: ========================================
+W (47690) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (47890) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (48098) http_ota: 验证对端X.509证书...
+I (48098) http_ota: 证书验证成功
+I (48098) http_ota: 加密套件: TLS-ECDHE-ECDSA-WITH-AES-256-GCM-SHA384
+I (48101) http_ota: 发送HTTP请求...
+I (48105) http_ota: 读取HTTP响应...
+W (48197) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (48201) http_ota: OTA检查请求成功
+I (48201) http_ota: OTA检查任务完成，结果: 0
+I (48201) http_ota: OTA检查任务已完成，销毁资源
+I (48206) http_ota: 结束后 - 内部RAM剩余: 19839 字节
+I (48212) http_ota: 结束后 - PSRAM剩余: 5331992 字节
+E (48217) BRTC_APP: 返回错误码: 405, 消息: 认证失败
+Guru Meditation Error: Core  0 panic'ed (LoadProhibited). Exception was unhandled.
+
+Core  0 register dump:
+PC      : 0x400556d5  PS      : 0x00060530  A0      : 0x821b7989  A1      : 0x3fcb9ba0  
+A2      : 0x00000000  A3      : 0xfffffffc  A4      : 0x000000ff  A5      : 0x0000ff00  
+A6      : 0x00ff0000  A7      : 0xff000000  A8      : 0x00000000  A9      : 0x3fcb9e80  
+A10     : 0x00060523  A11     : 0x00000000  A12     : 0x00060520  A13     : 0x00000012  
+A14     : 0xa0000000  A15     : 0x3c277030  SAR     : 0x00000017  EXCCAUSE: 0x0000001c  
+EXCVADDR: 0x00000000  LBEG    : 0x400556d5  LEND    : 0x400556e5  LCOUNT  : 0xffffffff  
+
+
+Backtrace: 0x400556d2:0x3fcb9ba0 0x421b7986:0x3fcb9bb0 0x421ae5c3:0x3fcb9ed0 0x42012776:0x3fcb9f90 0x420144b7:0x3fcb9fb0 0x4201489b:0x3fcbac10 0x42012194:0x3fcbac40 0x421d8374:0x3fcbacc0
+
+
+
+
+ELF file SHA256: c692f0421
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x28 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40388ab1
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1668
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x317c
+entry 0x403c894c
+I (29) boot: ESP-IDF v5.5.4 2nd stage bootloader
+I (29) boot: compile time Jun  4 2026 12:45:26
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 16MB
+I (52) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (59) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 otadata          OTA data         01 00 00010000 00002000
+I (85) boot:  3 ota_0            OTA app          00 10 00020000 003e8000
+I (91) boot:  4 ota_1            OTA app          00 11 00420000 003e8000
+I (98) boot:  5 model            Unknown data     01 82 00808000 00412000
+I (104) boot:  6 spiffs_data      Unknown data     01 82 00c1a000 00100000
+I (111) boot:  7 wifi_web         Unknown data     01 82 00d1a000 00040000
+I (117) boot: End of partition table
+I (121) esp_image: segment 0: paddr=00020020 vaddr=3c1e0020 size=89344h (561988) map
+I (211) esp_image: segment 1: paddr=000a936c vaddr=3fca7200 size=06cach ( 27820) load
+I (217) esp_image: segment 2: paddr=000b0020 vaddr=42000020 size=1d92dch (1938140) map
+I (504) esp_image: segment 3: paddr=00289304 vaddr=3fcadeac size=031c0h ( 12736) load
+I (507) esp_image: segment 4: paddr=0028c4cc vaddr=40378000 size=1f1a0h (127392) load
+I (532) esp_image: segment 5: paddr=002ab674 vaddr=50000000 size=00028h (    40) load
+I (533) esp_image: segment 6: paddr=002ab6a4 vaddr=600fe000 size=00060h (    96) load
+I (549) boot: Loaded app from partition at offset 0x20000
+I (549) boot: Disabling RNG early entropy source...
+W (559) flash HPM: HPM mode is optional feature that depends on flash model. Read Docs First!
+W (559) flash HPM: HPM mode with DC adjustment is disabled. Some flash models may not be supported. Read Docs First!
+W (566) flash HPM: High performance mode of this flash model hasn't been supported.
+I (574) MSPI Timing: Enter flash timing tuning
+I (578) octal_psram: vendor id    : 0x0d (AP)
+I (582) octal_psram: dev id       : 0x02 (generation 3)
+I (587) octal_psram: density      : 0x03 (64 Mbit)
+I (592) octal_psram: good-die     : 0x01 (Pass)
+I (596) octal_psram: Latency      : 0x01 (Fixed)
+I (600) octal_psram: VCC          : 0x01 (3V)
+I (604) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (609) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (614) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (619) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (624) octal_psram: DriveStrength: 0x00 (1/1)
+I (628) MSPI Timing: Enter psram timing tuning
+I (637) esp_psram: Found 8MB PSRAM device
+I (638) esp_psram: Speed: 120MHz
+I (670) mmu_psram: Read only data copied and mapped to SPIRAM
+I (786) mmu_psram: Instructions copied and mapped to SPIRAM
+I (786) cpu_start: Multicore app
+I (1023) esp_psram: SPI SRAM memory test OK
+I (1032) cpu_start: GPIO 44 and 43 are used as console UART I/O pins
+I (1032) cpu_start: Pro cpu start user code
+I (1032) cpu_start: cpu freq: 240000000 Hz
+I (1035) app_init: Application information:
+I (1039) app_init: Project name:     leyu_yingji_v16_1
+I (1043) app_init: App version:      7a610fd-dirty
+I (1048) app_init: Compile time:     Jun  4 2026 12:43:37
+I (1053) app_init: ELF file SHA256:  c692f0421...
+I (1057) app_init: ESP-IDF:          v5.5.4
+I (1061) efuse_init: Min chip rev:     v0.0
+I (1065) efuse_init: Max chip rev:     v0.99 
+I (1069) efuse_init: Chip rev:         v0.2
+I (1073) heap_init: Initializing. RAM available for dynamic allocation:
+I (1080) heap_init: At 3FCB4878 len 00034E98 (211 KiB): RAM
+I (1085) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (1090) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (1095) heap_init: At 600FE060 len 00001F88 (7 KiB): RTCRAM
+I (1101) esp_psram: Adding pool of 5667K of PSRAM memory to heap allocator
+I (1107) esp_psram: Adding pool of 27K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (1119) spi_flash: detected chip: generic
+I (1122) spi_flash: flash io: qio
+W (1126) rmt(legacy): legacy driver is deprecated, please migrate to `driver/rmt_tx.h` and/or `driver/rmt_rx.h`
+I (1135) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (1142) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (1148) coexist: coex firmware version: 093e3d2
+I (1153) coexist: coexist rom version e7ae62f
+I (1157) main_task: Started on CPU0
+I (1160) esp_psram: Reserving pool of 16K of internal memory for DMA/internal allocations
+I (1168) main_task: Calling app_main()
+I (1178) main: GPIO1、GPIO48和GPIO2已设置为高电平
+I (1178) main: 开始硬件复位 4G 模块...
+I (1681) main: 4G 模块硬件复位完成
+I (1681) main: 已禁用板级SPIFFS设备初始化，避免与SD卡冲突
+I (1681) XGB-1815: RMT初始化完成，GPIO: 12，时钟分频: 8
+I (1715) main: 初始可用堆内存: 6049096 字节
+I (1715) PERIPH_I2C: I2C master bus initialized successfully
+W (1715) PERIPH_I2S: I2S[0] STD already enabled, tx:0x3c26a6b8, rx:0x3c26a874
+I (1720) PERIPH_I2S: I2S[0] STD,  TX, ws: 45, bclk: 9, dout: 8, din: 10
+I (1727) PERIPH_I2S: I2S[0] initialize success: 0x3c26a6b8
+I (1732) PERIPH_I2S: I2S[0] STD, RX, ws: 45, bclk: 9, dout: 8, din: 10
+I (1738) PERIPH_I2S: I2S[0] initialize success: 0x3c26a874
+I (1743) PERIPH_GPIO: Initialize success, pin: 46, set the default level: 0
+I (1750) BOARD_MANAGER: All peripherals initialized
+I (1755) BOARD_PERIPH: Reuse periph: i2s_audio_out, ref_count=2
+I (1760) DEV_AUDIO_CODEC: DAC is ENABLED
+I (1764) DEV_AUDIO_CODEC: Init audio_dac, i2s_name: i2s_audio_out, i2s_rx_handle:0x0, i2s_tx_handle:0x3c26a6b8, data_if: 0x3fcbfb70
+I (1775) BOARD_PERIPH: Reuse periph: i2c_master, ref_count=2
+I (1787) ES8311: Work in Slave mode
+I (1789) DEV_AUDIO_CODEC: Successfully initialized codec: audio_dac
+I (1790) DEV_AUDIO_CODEC: Create esp_codec_dev success, dev:0x3fcbfcd0, chip:es8311
+I (1797) DEV_AUDIO_CODEC: ADC is ENABLED
+I (1801) BOARD_PERIPH: Reuse periph: i2s_audio_in, ref_count=2
+I (1807) DEV_AUDIO_CODEC: Init audio_adc, i2s_name: i2s_audio_in, i2s_rx_handle:0x3c26a874, i2s_tx_handle:0x3c26a6b8, data_if: 0x3fcbfd18
+I (1819) BOARD_PERIPH: Reuse periph: i2c_master, ref_count=3
+I (1829) ES8311: Work in Slave mode
+I (1832) DEV_AUDIO_CODEC: Successfully initialized codec: audio_adc
+I (1833) DEV_AUDIO_CODEC: Create esp_codec_dev success, dev:0x3fcbfe30, chip:es8311
+I (1841) BOARD_MANAGER: Board manager initialized
+I (1845) BOARD_DEVICE: Device audio_dac already initialized, ref_count: 2
+I (1852) BOARD_DEVICE: Device audio_adc already initialized, ref_count: 2
+E (1858) BOARD_DEVICE: [esp_board_device_show] Device fs_sdcard not found
+I (1865) BOARD_DEVICE: Device handle audio_dac found, Handle: 0x3fceedfc TO: 0x3fceedfc
+I (1872) BOARD_DEVICE: Device handle audio_adc found, Handle: 0x3fcbfd00 TO: 0x3fcbfd00
+I (1880) BASIC_BOARD: board_name: ESP32_S3_Korvo_2L, target_name: esp32s3_korvo2_v3
+I (1887) BASIC_BOARD: board_name: ESP32_S3_Korvo_2L, target_name: echoear_core_board_v1_2
+I (1895) BASIC_BOARD: board_name: ESP32_S3_Korvo_2L, target_name: esp_box_3
+I (1902) BASIC_BOARD: board_name: ESP32_S3_Korvo_2L, target_name: ESP32_S3_Korvo_2L
+I (1909) AUDIO_PROCESSOR: Initializing audio manager...
+I (1914) AUDIO_PROCESSOR: Audio manager initialized successfully
+I (1920) BRTC_APP: play_dev: 0x3fcbfcd0, rec_dev: 0x3fcbfe30
+I (1925) I2S_IF: Paired data: 0x3fcbfb70, current mode: record, paired in_enable: 0, paired out_enable: 0
+I (1935) I2S_IF: STD: RX, data_bit: 16, slot_bit: 16, ws_width: 16, slot_mode: STEREO, slot_mask: 0x3
+I (1944) I2S_IF: STD: RX, sample_rate_hz: 16000, mclk_multiple: 256, clk_src: 6
+I (1951) I2S_IF: STD: TX, data_bit: 16, slot_bit: 16, ws_width: 16, slot_mode: STEREO, slot_mask: 0x3
+I (1960) I2S_IF: STD: TX, sample_rate_hz: 16000, mclk_multiple: 256, clk_src: 6
+I (1981) Adev_Codec: Open codec device OK
+I (1981) I2S_IF: Current mode(playback) and peer mode have same sample_rate 16000, channel 2, bits_per_sample 16
+I (1984) I2S_IF: STD: TX, data_bit: 16, slot_bit: 16, ws_width: 16, slot_mode: STEREO, slot_mask: 0x3
+I (1993) I2S_IF: STD: TX, sample_rate_hz: 16000, mclk_multiple: 256, clk_src: 6
+I (2015) Adev_Codec: Open codec device OK
+I (2016) AUDIO_PROCESSOR: Opening audio playback...
+W (2016) AUD_SDEC_REG: Overwrote ES decoder 542523735
+I (2017) ASP_POOL: Dest rate:16000
+I (2020) ASP_POOL: Dest channels:2
+I (2024) ASP_POOL: Dest bits:16
+I (2027) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc0018-0x3fcc0018, wk:0x0, run:0]
+I (2034) AUDIO_PROCESSOR: Audio playback opened successfully
+I (2040) ASP_POOL: Dest rate:16000
+I (2043) ASP_POOL: Dest channels:2
+I (2046) ASP_POOL: Dest bits:16
+I (2049) AUDIO_PROCESSOR: Audio prompt opened successfully
+I (2049) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc14e8-0x3fcc14e8, wk:0x0, run:0]
+I (2054) AUDIO_PROCESSOR: Opening audio recorder...
+I (2066) ESP_GMF_POOL: Registered items on pool:0x3c26bb00, audio_recorder_open-1275
+I (2074) ESP_GMF_POOL: EL, Item:0x3c26bbf0, H:0x3c26bb14, TAG:aud_enc
+I (2080) ESP_GMF_POOL: EL, Item:0x3c26bcd0, H:0x3c26bc00, TAG:aud_ch_cvt
+I (2086) ESP_GMF_POOL: EL, Item:0x3c26bdac, H:0x3c26bce0, TAG:aud_bit_cvt
+I (2093) ESP_GMF_POOL: EL, Item:0x3c26be90, H:0x3c26bdbc, TAG:aud_rate_cvt
+I (2099) MODEL_LOADER: The storage free size is 24576 KB
+I (2104) MODEL_LOADER: The partition size is 4168 KB
+I (2109) MODEL_LOADER: Successfully load srmodels
+I (2113) AFE_CONFIG: Set Noise Suppression Model: nsnet2
+I (2118) AFE_CONFIG: Set WakeNet Model: wn9_xiaoluxiaolu_tts2
+
+/********** General AFE (Audio Front End) Parameter **********/
+pcm_config.total_ch_num: 2
+pcm_config.mic_num: 1: [ ch0 ]
+pcm_config.ref_num: 1: [ ch1 ]
+pcm_config.sample_rate: 16000
+afe_type: SR
+afe_mode: LOW COST
+afe_perferred_core: 0
+afe_perferred_priority: 5
+afe_ringbuf_size: 50
+memory_alloc_mode: 3
+afe_linear_gain: 1.0
+debug_init: false
+fixed_first_channel: false
+
+/********** AEC (Acoustic Echo Cancellation) **********/
+aec_init: true
+aec mode: SR_LOW_COST
+aec_filter_length: 4
+
+/********** SE (Speech Enhancement, Microphone Array Processing) **********/
+se_init: false, model: BSS
+
+/********** NS (Noise Suppression) **********/
+ns_init: false
+ns model name: nsnet2
+
+/********** VAD (Voice Activity Detection) **********/
+vad_init: false
+vad_mode: 0
+vad_model_name: NULL
+vad_min_speech_ms: 128
+vad_min_noise_ms: 1000
+vad_delay_ms: 128
+vad_mute_playback: false
+vad_enable_channel_trigger: false
+
+/********** WakeNet (Wake Word Engine) **********/
+wakenet_init: false
+wakenet_model_name: wn9_xiaoluxiaolu_tts2
+wakenet_model_name_2: NULL
+wakenet_mode: 0
+
+/********** AGC (Automatic Gain Control) **********/
+agc_init: false
+agc_mode: WAKENET
+agc_compression_gain_db: 9
+agc_target_level_dbfs: 9
+
+/**************************************************/
+I (2281) AFE: AFE Version: (1MIC_V250121)
+I (2281) AFE: Input PCM Config: total 2 channels(1 microphone, 1 playback), sample rate:16000
+I (2282) AFE: AFE Pipeline: [input] -> |AEC(SR_LOW_COST)| -> [output]
+I (2289) AFE_MANAGER: Feed task, ch 2, chunk 512, buf size 2048
+I (2294) GMF_AFE: Create AFE, ai_afe-0x3c26feb0
+I (2298) GMF_AFE: Create AFE, ai_afe-0x3c2a5b04
+I (2302) GMF_AFE: New an object,ai_afe-0x3c2a5b04
+I (2307) AUDIO_PROCESSOR: Configuring PCM encoder
+I (2311) AUDIO_PROCESSOR: All encoders configured successfully
+I (2316) AUDIO_PROCESSOR: 创建录音任务前内存状态 - 堆内存: 5806496 字节, PSRAM: 5611156 字节
+I (2326) AUDIO_PROCESSOR: 创建录音任务 - 栈大小: 4096 字节, 使用外部RAM: 是
+I (2334) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc378c, wk:0x0, run:0]
+I (2342) AUDIO_PROCESSOR: 录音任务创建成功
+I (2347) AUDIO_PROCESSOR: 创建录音任务后内存状态 - 堆内存: 5801608 字节, PSRAM: 5607016 字节
+I (2357) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc378c, wk:0x3c2a71a0, run:0]
+I (2365) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc378c, wk:0x3c2a71a0, run:0]
+I (2374) NEW_DATA_BUS: New ringbuffer:0x3c2a7290, num:2, item_cnt:2048, db:0x3c2a82bc
+I (2382) NEW_DATA_BUS: New ringbuffer:0x3c2a8324, num:1, item_cnt:8192, db:0x3c2aa350
+I (2389) AFE_MANAGER: AFE manager suspend 1
+I (2393) AFE_MANAGER: AFE manager suspend 0
+I (2397) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2a71a0, ctx:0x3c2a5b04, label:ai_afe_open]
+I (2406) ESP_GMF_PORT: ACQ IN, new self payload:0x3c2a71a0, port:0x3c2a6144, el:0x3c2a5b04-ai_afe
+I (2429) AUDIO_PROCESSOR: Audio recorder opened successfully
+I (2429) AUDIO_PROCESSOR: Opening audio feeder...
+I (2429) NEW_DATA_BUS: New ringbuffer:0x3c2aabd4, num:1, item_cnt:8192, db:0x3c2acc00
+I (2442) ESP_GMF_POOL: Registered items on pool:0x3c2aa3b8, audio_feeder_open-1495
+I (2443) ESP_GMF_POOL: EL, Item:0x3c2acd54, H:0x3c2acc58, TAG:aud_dec
+I (2449) ESP_GMF_POOL: EL, Item:0x3c2ace34, H:0x3c2acd64, TAG:aud_ch_cvt
+I (2455) ESP_GMF_POOL: EL, Item:0x3c2acf10, H:0x3c2ace44, TAG:aud_bit_cvt
+I (2462) ESP_GMF_POOL: EL, Item:0x3c2acff4, H:0x3c2acf20, TAG:aud_rate_cvt
+I (2473) AUDIO_PROCESSOR: Configuring PCM decoder
+I (2473) AUDIO_PROCESSOR: All decoders configured successfully
+I (2478) AUDIO_PROCESSOR: 创建播放任务前内存状态 - 堆内存: 5774268 字节, PSRAM: 5581380 字节
+I (2488) AUDIO_PROCESSOR: 创建播放任务 - 栈大小: 24576 字节, 使用外部RAM: 是
+I (2503) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc40f8, wk:0x0, run:0]
+I (2504) AUDIO_PROCESSOR: 播放任务创建成功
+I (2509) AUDIO_PROCESSOR: 创建播放任务后内存状态 - 堆内存: 5748896 字节, PSRAM: 5556760 字节
+I (2518) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc40f8, wk:0x3c2b35f0, run:0]
+I (2533) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2a7218, ctx:0x3c2a5be0, label:aud_rate_cvt_open]
+I (2537) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3b4c, ctx:0x3c2a5d0c, label:aud_ch_cvt_open]
+I (2546) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3ba8, ctx:0x3c2a5e38, label:aud_bit_cvt_open]
+I (2556) ESP_GMF_AENC: Open, type:PCM, acquire in frame: 640, out frame: 640
+I (2562) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3b4c, ctx:0x3c2a5f84, label:aud_enc_open]
+I (2579) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc40f8, wk:0x3c2b35f0, run:0]
+I (2580) AUDIO_PROCESSOR: Audio feeder opened successfully
+W (2585) AUD_SDEC: Not find default parser for 541934416
+I (2590) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b35f0, ctx:0x3c2ad048, label:aud_dec_open]
+I (2600) ESP_GMF_PORT: ACQ IN, new self payload:0x3c2b35f0, port:0x3c2ad544, el:0x3c2ad048-aud_dec
+I (2608) AUDIO_PROCESSOR: Audio playback started successfully
+I (2614) AUDIO_PROCESSOR: Initializing audio render...
+I (2621) ASP_POOL: Dest rate:16000
+I (2622) ASP_POOL: Dest channels:2
+I (2625) ASP_POOL: Dest bits:16
+I (2628) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4990-0x3fcc4990, wk:0x0, run:0]
+I (2638) AUDIO_PROCESSOR: Audio prompt opened successfully
+I (2641) AUDIO_PROCESSOR: Starting prompt: file:///spiffs/poweron.mp3, state: 1
+I (2648) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4990-0x3fcc4990, wk:0x3c2bcb04, run:0]
+I (2656) ESP_GMF_FILE: Open, dir:1, uri:file:///spiffs/poweron.mp3
+I (2667) ESP_GMF_FILE: File size: 9504 byte, file position: 0
+I (2667) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcb04, ctx:0x3c2bc4d8, label:aud_dec_open]
+I (2677) ESP_GMF_PORT: ACQ IN, new self payload:0x3c2bcb04, port:0x3c2bca64, el:0x3c2bc4d8-aud_dec
+W (2687) ESP_GMF_ASMP_DEC: Not enough memory for out, need:1152, old: 1024, new: 1152
+I (2694) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcec8, ctx:0x3c2bc5c4, label:aud_rate_cvt_open]
+I (2703) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcfc0, ctx:0x3c2bc718, label:aud_ch_cvt_open]
+I (2712) AUDIO_PROCESSOR: Get info, rate:16000, channels:2, bits:16
+I (2718) AUDIO_PROCESSOR: prompt_event_callback: Get State, 1,ESP_AUD_SIMPLE_PLAYER_RUNNING
+I (2726) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bd01c, ctx:0x3c2bc868, label:aud_bit_cvt_open]
+W (2838) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (3038) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (3345) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (3545) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (3851) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (4051) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (4205) ESP_GMF_FILE: No more data, ret: 0
+I (4250) ESP_GMF_FILE: No more data, ret: 0
+I (4250) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4990-0x3fcc4990, wk:0x3c2bcb3c, job:0x3c2bc4d8-aud_dec_proc]
+I (4252) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4990-0x3fcc4990, wk:0x3c2bceec, job:0x3c2bc5c4-aud_rate_cvt_proc]
+I (4263) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4990-0x3fcc4990, wk:0x3c2bcfe4, job:0x3c2bc718-aud_ch_cvt_proc]
+I (4273) ESP_GMF_TASK: Job is done, [tsk:TSK_0x3fcc4990-0x3fcc4990, wk:0x3c2bd058, job:0x3c2bc868-aud_bit_cvt_proc]
+I (4283) ESP_GMF_FILE: CLose, 0x3c2bc9b4, pos = 9504/9504
+I (4288) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bceec, ctx:0x3c2bc4d8, label:aud_dec_close]
+I (4297) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcb3c, ctx:0x3c2bc5c4, label:aud_rate_cvt_close]
+I (4307) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcb60, ctx:0x3c2bc718, label:aud_ch_cvt_close]
+I (4317) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2bcfc0, ctx:0x3c2bc868, label:aud_bit_cvt_close]
+I (4326) AUDIO_PROCESSOR: prompt_event_callback: Get State, 4,ESP_AUD_SIMPLE_PLAYER_FINISHED
+I (4334) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4990-0x3fcc4990, wk:0x0, run:0]
+I (4342) ESP_GMF_TASK: Waiting to run... [tsk:TSK_0x3fcc4990-0x3fcc4990, wk:0x0, run:0]
+I (4350) BATTERY_MODULE: 电池管理示例程序启动
+I (4355) BATTERY_MODULE: ADC句柄创建成功
+W (4357) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (4359) main: 初始化系统监控模块
+I (4365) BATTERY: 使用外部ADC句柄
+I (4369) main: 初始化按键处理
+I (4373) BATTERY: 使用Curve Fitting校准方案
+I (4376) BUTTON_HANDLER: 初始化按键处理
+I (4380) BATTERY: ADC校准初始化成功
+I (4385) BUTTON_HANDLER: 按键处理初始化完成
+I (4389) BATTERY: 电池管理器初始化完成，分压系数: 65.00
+I (4393) BUTTON_HANDLER: 按键配置信息:
+I (4399) BATTERY_MODULE: 电池监控任务启动
+I (4403) BUTTON_HANDLER: GPIO38 - 音量增加/子女1拨号
+I (4408) BATTERY_MODULE: ========================================
+I (4413) BUTTON_HANDLER: GPIO39 - 音量减少/子女2拨号
+I (4419) BATTERY_MODULE: ADC原始值: 1095
+I (4424) BUTTON_HANDLER: GPIO40 - 接听/挂断/SOS拨号
+I (4428) BATTERY_MODULE: ADC电压: 63 mV
+I (4433) BUTTON_HANDLER: GPIO4  - 短按:拒接/唤醒, 长按2秒:关机
+I (4437) BATTERY_MODULE: 电池电压: 4155 mV
+I (4444) UART_CMD: 启动串口指令初始化任务（使用内置RAM）...
+I (4448) BATTERY_MODULE: 电池电量: 94%
+I (4455) UART_CMD: 启动前 - 内部RAM剩余: 196011 字节
+I (4458) BATTERY_MODULE: 充电状态: 未充电
+I (4464) UART_CMD: 串口指令初始化任务启动
+I (4464) UART_CMD: 串口指令初始化任务已创建
+I (4473) UART_CMD: 检查初始化状态完成，模块未初始化
+I (4473) BATTERY_MODULE: ========================================
+I (4484) UART_CMD: 判断UART端口类型...
+I (4484) UART_CMD: 结束后 - 内部RAM剩余: 191939 字节
+I (4494) UART_CMD: 检测到UART0，日志系统已初始化TX，尝试安装驱动以支持RX读取
+I (4508) UART_CMD: UART参数结构体配置完成
+I (4512) UART_CMD: 开始安装UAI (4526) UART_CMD: UART参数配置成功
+I (4526) UART_CMD: 开始设置UART引脚...
+I (4527) UART_CMD: 检测到UART0，使用日志系统默认引脚配置，跳过所有引脚配置
+I (4532) UART_CMD: UART引脚设置完成
+I (4536) UART_CMD: 状态变量初始化完成
+I (4540) UART_CMD: === 注册指令成功: xsz_write_sn - 写入SN号到NVS ===
+I (4547) UART_CMD: === 注册指令成功: xsz_read_sn - 从NVS读取SN号 ===
+I (4554) UART_CMD: === 注册指令成功: xsz_clear_wifi - 清除NVS中的WiFi配置信息 ===
+I (4562) UART_CMD: === 注册指令成功: xsz_write_wifi - 写入WiFi名称和密码到NVS ===
+W (4565) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (4571) UART_CMD: === 注册指令成功: xsz_reboot - 重启系统 ===
+I (4577) main: 启动BLUFI初始化任务
+I (4583) UART_CMD: === 注册指令成功: xsz_write_net_mode - 写入网络模式到NVS(0:USB 4G模块, 1:BLUFI任务) ===
+I (4588) pp: pp rom version: e7ae62f
+I (4598) UART_CMD: === 串口指令组件初始化成功 ===
+I (4601) net80211: net80211 rom version: e7ae62f
+I (4607) UART_CMD: 串口指令处理任务已启动
+I (4612) wifi:I (4616) UART_CMD: 支持以下指令:
+wifi driver task: 3fccefd8, prio:23, stack:6656, core=0I (4620) UART_CMD:   xsz_write_sn,<SN号> - 写入SN号到NVS
+
+I (4631) UART_CMD:   xsz_read_sn - 从NVS读取SN号
+I (4635) wifi:I (4636) UART_CMD:   xsz_clear_wifi - 清除NVS中的WiFi配置信息
+wifi firmware version: 0947e8b
+I (4643) UART_CMD:   xsz_write_wifi,<SSID>,<密码> - 写入WiFi名称和密码到NVS
+I (4646) wifi:I (4653) UART_CMD:   xsz_reboot - 重启系统
+wifi certification version: v7.0I (4659) UART_CMD:   xsz_write_net_mode,<模式> - 写入网络模式(0:USB 4G模块, 1:BLUFI任务)
+
+I (4577) SIP_SERVICE_V2: SIP事件队列创建成功
+I (4670) wifi:I (4607) UART_CMD: 串口接收任务开始运行
+config NVS flash: enabled
+I (4683) wifi:config nano formatting: disabled
+I (4687) wifi:Init data frame dynamic rx buffer num: 32
+I (4692) wifi:Init static rx mgmt buffer num: 5
+I (4697) wifi:Init management short buffer num: 32
+I (4701) wifi:Init static tx buffer num: 16
+I (4705) wifi:Init tx cache buffer num: 32
+I (4709) wifi:Init static tx FG buffer num: 2
+I (4713) wifi:Init static rx buffer size: 1600
+I (4717) wifi:Init static rx buffer num: 10
+I (4721) wifi:Init dynamic rx buffer num: 32
+I (4571) main: BLUFI任务创建成功
+I (4725) wifi_init: rx ba win: 6
+I (4731) wifi_init: accept mbox: 6
+I (4734) wifi_init: tcpip mbox: 32
+I (4738) wifi_init: udp mbox: 6
+I (4740) wifi_init: tcp mbox: 6
+I (4743) wifi_init: tcp tx win: 5760
+I (4747) wifi_init: tcp rx win: 5760
+I (4750) wifi_init: tcp mss: 1440
+I (4753) wifi_init: WiFi/LWIP prefer SPIRAM
+I (4757) wifi_init: WiFi IRAM OP enabled
+I (4760) wifi_init: WiFi RX IRAM OP enabled
+I (4765) phy_init: phy_version 711,97bcf0a2,Aug 25 2025,19:04:10
+I (4826) wifi:mode : sta (90:70:69:00:9c:dc)
+I (4826) wifi:enable tsf
+I (4827) blufi_example: WiFi初始化完成，AP+STA双模式已启用
+I (4827) blufi_example: WiFi事件触发: 43
+I (4828) BLUFI_EXAMPLE: BLUFI VERSION 0103
+
+I (4832) blufi_example: WiFi事件触发: 2
+I (4836) BLUFI_EXAMPLE: WiFi已配置，不初始化蓝牙功能
+
+I (4832) main: BLUFI初始化完成，继续启动USB 4G模块
+I (4851) main: 等待4G模块上电稳定: 6830 ms
+I (4855) AUDIO_PROCESSOR: Closing audio recorder...
+I (4860) AFE_MANAGER: AFE manager suspend 1
+W (4870) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (4899) wifi:new:<11,0>, old:<1,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+I (4899) wifi:state: init -> auth (0xb0)
+I (4901) blufi_example: WiFi事件触发: 43
+I (5170) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3b70, ctx:0x3c2a5b04, label:ai_afe_close]
+I (5170) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2a7254, ctx:0x3c2a5be0, label:aud_rate_cvt_close]
+I (5177) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2a71d4, ctx:0x3c2a5d0c, label:aud_ch_cvt_close]
+I (5187) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3be4, ctx:0x3c2a5e38, label:aud_bit_cvt_close]
+I (5197) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b3c20, ctx:0x3c2a5f84, label:aud_enc_close]
+I (5206) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc378c, wk:0x0, run:0]
+I (5214) AFE: exit
+I (5216) AFE_MANAGER: AFE manager destroy
+I (5220) AUDIO_PROCESSOR: Audio recorder closed successfully
+I (5225) AUDIO_PROCESSOR: Closing audio feeder...
+I (5229) AUDIO_PROCESSOR: Stopping audio feeder...
+I (5234) ESP_GMF_TASK: One times job is complete, del[wk:0x3c26bf04, ctx:0x3c2ad048, label:aud_dec_close]
+I (5243) ESP_GMF_TASK: One times job is complete, del[wk:0x3c26bf3c, ctx:0x3c2ad144, label:aud_ch_cvt_close]
+I (5253) ESP_GMF_TASK: One times job is complete, del[wk:0x3c26bf78, ctx:0x3c2ad294, label:aud_bit_cvt_close]
+I (5487) ESP_GMF_TASK: One times job is complete, del[wk:0x3c26bfb4, ctx:0x3c2ad3e0, label:aud_rate_cvt_close]
+I (5495) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc40f8, wk:0x0, run:0]
+I (5495) AUDIO_PROCESSOR: Audio feeder stopped successfully
+I (5503) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcc40f8, wk:0x0, run:0]
+I (5517) AUDIO_PROCESSOR: Audio playback closed successfully
+I (5522) AUDIO_PROCESSOR: Opening audio recorder...
+I (5527) ESP_GMF_POOL: Registered items on pool:0x3c26bf9c, audio_recorder_open-1275
+I (5534) ESP_GMF_POOL: EL, Item:0x3c26bfd0, H:0x3c26badc, TAG:aud_enc
+I (5540) ESP_GMF_POOL: EL, Item:0x3c26bc58, H:0x3c26bb98, TAG:aud_ch_cvt
+I (5540) wifi:I (5546) ESP_GMF_POOL: EL, Item:0x3c26bd34, H:0x3c26bc68, TAG:aud_bit_cvt
+state: auth -> assoc (0x0)I (5554) ESP_GMF_POOL: EL, Item:0x3c26be18, H:0x3c26bd44, TAG:aud_rate_cvt
+
+I (5563) AFE_CONFIG: Set Noise Suppression Model: nsnet2
+I (5568) AFE_CONFIG: Set WakeNet Model: wn9_xiaoluxiaolu_tts2
+
+/********** General AFE (Audio Front End) Parameter **********/
+pcm_config.total_ch_num: 2
+pcm_config.mic_num: 1: [ ch0 ]
+pcm_config.ref_num: 1: [ ch1 ]
+pcm_config.sample_rate: 16000
+afe_type: SR
+afe_mode: LOW COST
+afe_perferred_core: 0
+afe_perferred_priority: 5
+afe_ringbuf_size: 50
+memory_alloc_mode: 3
+afe_linear_gain: 1.0
+debug_init: false
+fixed_first_channel: false
+
+/********** AEC (Acoustic Echo Cancellation) **********/
+aec_init: true
+aec mode: SR_LOW_COST
+aec_filter_length: 4
+
+/********** SE (Speech Enhancement, Microphone Array Processing) **********/
+se_init: false, model: BSS
+
+/********** NS (Noise Suppression) **********/
+ns_init: false
+ns model name: nsnet2
+
+/********** VAD (Voice Activity Detection) **********/
+vad_init: false
+vad_mode: 0
+vad_model_name: NULL
+vad_min_speech_ms: 128
+vad_min_noise_ms: 1000
+vad_delay_ms: 128
+vad_mute_playback: false
+vad_enable_channel_trigger: false
+
+/********** WakeNet (Wake Word Engine) **********/
+wakenet_init: false
+wakenet_model_name: wn9_xiaoluxiaolu_tts2
+wakenet_model_name_2: NULL
+wakenet_mode: 0
+
+/********** AGC (Automatic Gain Control) **********/
+agc_init: false
+agc_mode: WAKENET
+agc_compression_gain_db: 9
+agc_target_level_dbfs: 9
+
+/**************************************************/
+I (5623) wifi:state: assoc -> run (0x10)
+I (5727) wifi:connected with OPPO Find X9 Pro 7A4C, aid = 4, channel 11, BW20, bssid = ea:e5:04:56:7d:c0
+I (5727) wifi:security: WPA3-SAE HUNT_AND_PECK, phy: bgn, rssi: -45, cipher(pairwise:0x3, group:0x3), pmf:1
+I (5731) AFE: AFE Version: (1MIC_V250121)
+I (5735) wifi:I (5738) AFE: Input PCM Config: total 2 channels(1 microphone, 1 playback), sample rate:16000
+pm start, type: 1
+I (5748) AFE: AFE Pipeline: [input] -> |AEC(SR_LOW_COST)| -> [output]
+
+I (5756) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (5756) GMF_AFE: Create AFE, ai_afe-0x3c298d34
+I (5764) wifi:set rx beacon pti, rx_bcn_pti: 14, bcn_timeout: 25000, mt_pti: 14, mt_time: 10000
+I (5768) GMF_AFE: Create AFE, ai_afe-0x3c2b3404
+I (5764) AFE_MANAGER: Feed task, ch 2, chunk 512, buf size 2048
+I (5780) GMF_AFE: New an object,ai_afe-0x3c2b3404
+I (5777) blufi_example: WiFi事件触发: 4
+I (5791) AUDIO_PROCESSOR: Configuring PCM encoder
+I (5799) AUDIO_PROCESSOR: All encoders configured successfully
+I (5804) AUDIO_PROCESSOR: 创建录音任务前内存状态 - 堆内存: 5577192 字节, PSRAM: 5470976 字节
+I (5814) AUDIO_PROCESSOR: 创建录音任务 - 栈大小: 4096 字节, 使用外部RAM: 是
+I (5816) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us
+I (5822) AUDIO_PROCESSOR: 录音任务创建成功
+I (5830) wifi:I (5835) AUDIO_PROCESSOR: 创建录音任务后内存状态 - 堆内存: 5572280 字节, PSRAM: 5466824 字节
+AP's beacon interval = 102400 us, DTIM period = 2
+I (5830) ESP_GMF_TASK: Waiting to run... [tsk:audio_recorder_task-0x3fcc3c0c, wk:0x0, run:0]
+I (5853) wifi:<ba-add>idx:0 (ifx:0, ea:e5:04:56:7d:c0), tid:0, ssn:3, winSize:64
+I (5865) AUDIO_PROCESSOR: Audio recorder opened successfully
+I (5865) NEW_DATA_BUS: New ringbuffer:0x3c2bc258, num:2, item_cnt:2048, db:0x3c2bc280
+I (5871) AUDIO_PROCESSOR: Opening audio feeder...
+I (5878) NEW_DATA_BUS: New ringbuffer:0x3c2bc2d8, num:1, item_cnt:8192, db:0x3c2bc300
+I (5883) NEW_DATA_BUS: New ringbuffer:0x3c2bc368, num:1, item_cnt:8192, db:0x3c2bc3b0
+I (5890) AFE_MANAGER: AFE manager suspend 1
+I (5898) ESP_GMF_POOL: Registered items on pool:0x3c2bc418, audio_feeder_open-1495
+I (5902) AFE_MANAGER: AFE manager suspend 0
+I (5909) ESP_GMF_POOL: EL, Item:0x3c2bc44c, H:0x3c2a6de4, TAG:aud_dec
+I (5913) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b4950, ctx:0x3c2b3404, label:ai_afe_open]
+I (5919) ESP_GMF_POOL: EL, Item:0x3c2bc480, H:0x3c2a6ec0, TAG:aud_ch_cvt
+I (5928) ESP_GMF_PORT: ACQ IN, new self payload:0x3c2b4950, port:0x3c2b4910, el:0x3c2b3404-ai_afe
+I (5934) ESP_GMF_POOL: EL, Item:0x3c2a7038, H:0x3c2a6f6c, TAG:aud_bit_cvt
+I (5950) ESP_GMF_POOL: EL, Item:0x3c2a711c, H:0x3c2a7048, TAG:aud_rate_cvt
+I (5957) AUDIO_PROCESSOR: Configuring PCM decoder
+I (5961) AUDIO_PROCESSOR: All decoders configured successfully
+I (5966) AUDIO_PROCESSOR: 创建播放任务前内存状态 - 堆内存: 5544692 字节, PSRAM: 5441068 字节
+I (5976) AUDIO_PROCESSOR: 创建播放任务 - 栈大小: 24576 字节, 使用外部RAM: 是
+I (5985) AUDIO_PROCESSOR: 播放任务创建成功
+I (5985) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcd9dd8, wk:0x0, run:0]
+I (5989) AUDIO_PROCESSOR: 创建播放任务后内存状态 - 堆内存: 5519324 字节, PSRAM: 5416448 字节
+I (6006) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcd9dd8, wk:0x3c2993fc, run:0]
+I (6006) AUDIO_PROCESSOR: Audio feeder opened successfully
+I (6015) ESP_GMF_TASK: Waiting to run... [tsk:audio_feeder_task-0x3fcd9dd8, wk:0x3c2993fc, run:0]
+I (6029) AUDIO_PROCESSOR: Audio playback started successfully
+W (6029) AUD_SDEC: Not find default parser for 541934416
+I (6039) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2993fc, ctx:0x3c298630, label:aud_dec_open]
+I (6048) ESP_GMF_PORT: ACQ IN, new self payload:0x3c299660, port:0x3c29937c, el:0x3c298630-aud_dec
+I (6029) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2b49c8, ctx:0x3c2b34e0, label:aud_rate_cvt_open]
+I (6067) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2995a8, ctx:0x3c2b4a70, label:aud_ch_cvt_open]
+I (6076) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2993fc, ctx:0x3c2b4b1c, label:aud_bit_cvt_open]
+I (6086) ESP_GMF_AENC: Open, type:PCM, acquire in frame: 640, out frame: 640
+I (6092) ESP_GMF_TASK: One times job is complete, del[wk:0x3c2995a8, ctx:0x3c2b47d4, label:aud_enc_open]
+W (7069) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (7375) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (7575) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (7881) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (8034) BLUFI_EXAMPLE: WiFi连接成功
+
+I (8034) BLUFI_EXAMPLE: 网络连接等待完成
+
+W (8081) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (8387) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (8587) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (8893) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (9093) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (9399) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (9599) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (9906) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (10106) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (10411) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (10494) BATTERY_MODULE: ========================================
+I (10494) BATTERY_MODULE: ADC原始值: 1095
+I (10494) BATTERY_MODULE: ADC电压: 63 mV
+I (10497) BATTERY_MODULE: 电池电压: 4155 mV
+I (10501) BATTERY_MODULE: 电池电量: 94%
+I (10505) BATTERY_MODULE: 充电状态: 未充电
+I (10509) BATTERY_MODULE: ========================================
+W (10611) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (10918) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (11118) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (11424) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (11624) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (11686) main: usb网卡初始化任务创建成功
+I (11686) RNDIS_4G_MODULE: 启动策略: reset_reason=ESP_RST_PANIC，cold_boot_extended_wait=false
+I (11686) main: 等待网络(WiFi/4G)连接...
+W (11688) RNDIS_4G_MODULE: 默认事件循环已存在，跳过创建
+I (11692) BLUFI_EXAMPLE: WiFi连接成功
+
+I (11698) USBH_CDC: iot usbh cdc version: 3.0.0
+I (11702) main: 网络已连接
+I (11709) main: 初始化网络管理器
+I (11713) network_manager: 初始化网络管理器
+I (11718) network_manager: 检测到WiFi已初始化，模式: 1
+I (11730) network_manager: 初始化NTP时间同步...
+I (11730) network_manager: NTP初始化完成，开始同步时间...
+I (11734) network_manager: 网络智能监控任务已启动，将自动切换最优网络...
+I (11737) usbh_rndis: IOT USBH RNDIS Version: 0.3.0
+I (11743) network_manager: 网络智能监控任务创建成功
+I (11747) iot_eth: IoT ETH Version: 0.2.0
+I (11753) main: 初始化联系人管理器，从Flash加载通讯录
+I (11757) usbh_rndis: USB RNDIS network interface init success
+I (11763) contact_manager: 从Flash加载通讯录
+I (11768) iot_eth.netif_glue: ethernet attached to netif
+W (11773) contact_manager: 打开NVS命名空间失败，使用默认联系人数据
+I (11778) RNDIS_4G_MODULE: AT指令缓冲区分配成功 - 发送缓冲区:256字节, 响应缓冲区:1024字节, modem_info结构体:320字节
+I (11785) contact_manager: 联系人管理器初始化完成，共加载了 2 个联系人
+I (11798) RNDIS_4G_MODULE: IOT_ETH_EVENT_START
+I (11798) RNDIS_4G_MODULE: [FSM] STATE_POWER_ON - 等待RNDIS就绪
+I (11810) main: 初始化来电管理器
+I (11820) CALL_MANAGER: 初始化来电管理器
+I (11824) CALL_MANAGER: 来电管理器初始化完成
+I (11829) main: 从Flash初始化按键绑定号码到PSRAM
+E (11834) mqtt_example: NVS打开失败，错误代码: 4354
+W (11840) main: 子女1绑定号码为空或读取失败
+E (11845) mqtt_example: NVS打开失败，错误代码: 4354
+W (11850) main: 子女2绑定号码为空或读取失败
+E (11855) mqtt_example: NVS打开失败，错误代码: 4354
+W (11860) main: SOS绑定号码为空或读取失败
+I (11865) main: 等待有效的外网连接以启动云服务...
+I (11871) network_manager: 开始测试 [Active] 网络连通性
+I (11877) network_manager: 当前网络状态 - 4G: 非活动, WiFi: 活动
+I (11883) network_manager: [Active] 网络接口IP: 10.231.194.225
+I (11889) network_manager: 正在尝试连接到 223.5.5.5:53...
+W (11930) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (12066) network_manager: [Active] 网络连通性测试成功，已成功连接到 223.5.5.5:53
+I (12066) main: 外网连接已就绪，继续启动网络服务
+I (12069) main: 启动OTA任务前可用内存: 5477176 字节
+I (12074) ota_lib: OTA库初始化开始
+I (12079) ota_lib: SHA-256 for bootloader:  c559bb1909c324b0f104f47756e562a496c9213c265a25753f86ea907bd5dcfe
+I (12118) USBH_CDC: New device connected, address: 1
+I (12119) usbh_rndis: RNDIS device found: VID: 2ECC, PID: 3012, IFNUM: 0
+I (12119) cdc_descriptor: Found NOTIF endpoint: 7
+I (12123) cdc_descriptor: Found OUT endpoint: 12
+I (12127) cdc_descriptor: Found IN endpoint: 3
+W (12130) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (12133) usbh_rndis: Max transfer packets: 1
+I (12142) usbh_rndis: Max transfer size: 1580
+I (12147) usbh_rndis: rndis query OID_GEN_SUPPORTED_LIST success,oid num :28
+I (12157) usbh_rndis: rndis set OID_GEN_CURRENT_PACKET_FILTER success
+I (12160) usbh_rndis: rndis set OID_802_3_MULTICAST_LIST success
+I (12165) usbh_rndis: RNDIS connected success
+I (12169) iot_eth: Ethernet link up
+I (12172) RNDIS_4G_MODULE: IOT_ETH_EVENT_CONNECTED
+I (12177) iot_eth.netif_glue: Set MAC Address: AC:0C:29:A3:9B:6D
+I (12185) network_manager: 时间同步成功
+I (12187) network_manager: 当前时间: 2026-06-04 14:27:05
+I (12207) ota_lib: SHA-256 for current firmware:  d57969fc0c766f43d83e2cd7ee475c17f36bc954b710c2ca2b6789eb1c93e4e6
+I (12207) ota_lib: OTA信号量创建成功
+I (12210) ota_lib: 启动OTA任务（使用内部RAM）...
+I (12215) ota_lib: 启动前 - 内部RAM剩余: 84751 字节
+I (12220) ota_lib: 启动前 - PSRAM剩余: 5395120 字节
+I (12226) ota_lib: OTA任务已启动，等待手动触发升级
+I (12231) ota_lib: 内部RAM总大小: 296259 字节
+I (12236) ota_lib: 内部RAM剩余: 80679 字节
+I (12240) ota_lib: PSRAM剩余: 5395120 字节
+I (12244) ota_lib: 启动后 - 内部RAM剩余: 80679 字节
+I (12250) ota_lib: OTA任务已创建成功
+I (12254) main: 启动OTA任务后可用内存: 5459704 字节
+I (12259) main: 初始化百度RTC引擎前可用内存: 5459704 字节
+I (12266) BLUFI_EXAMPLE: WiFi连接成功
+
+E (12270) UART_CMD: NVS命名空间打开失败: ESP_ERR_NVS_NOT_FOUND
+W (12276) BRTC_APP: 无法从flash读取SN码，使用默认用户ID
+I (12282) BRTC_APP: 开始OTA检查，SN: unknown, 版本: 100003
+I (12288) http_ota: 启动OTA检查任务（任务栈在PSRAM，TCB在内部RAM）...
+I (12295) http_ota: 启动前 - 内部RAM剩余: 80267 字节
+I (12301) http_ota: 启动前 - PSRAM剩余: 5394092 字节
+I (12306) http_ota: 启动后 - 内部RAM剩余: 80267 字节
+I (12311) http_ota: 已从PSRAM分配任务栈: 31888 字节
+I (12317) http_ota: OTA检查任务启动
+I (12324) http_ota: OTA检查任务已创建，等待完成...
+W (12436) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (12636) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (12927) RNDIS_4G_MODULE: RNDIS链路和CDC句柄已稳定
+I (12927) RNDIS_4G_MODULE: [FSM] STATE_AT_SYNC - 初始化AT及同步波特率
+I (12928) RNDIS_4G_MODULE: AT init
+I (12931) RNDIS_4G_MODULE: AT parser created successfully
+I (12936) cdc_descriptor: Found NOTIF endpoint: 8
+I (12941) cdc_descriptor: Found OUT endpoint: 10
+I (12945) cdc_descriptor: Found IN endpoint: 1
+W (12943) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (12956) RNDIS_4G_MODULE: CDC port opened successfully
+I (12961) RNDIS_4G_MODULE: 已注册非请求响应处理回调
+I (12967) RNDIS_4G_MODULE: AT parser started successfully
+I (12973) RNDIS_4G_MODULE: AT probe succeeded on attempt 1/15
+I (12978) RNDIS_4G_MODULE: [FSM] STATE_CHECK_SIM - 检查SIM卡状态
+I (12985) RNDIS_4G_MODULE: SIM is ready on attempt 1/20
+I (12988) RNDIS_4G_MODULE: [FSM] STATE_CHECK_NETWORK - 检查网络注册状态
+I (12997) RNDIS_4G_MODULE: Network registered on attempt 1/30, stat=1
+I (13001) RNDIS_4G_MODULE: [FSM] STATE_START_DATACALL - 开始数据拨号
+I (13008) RNDIS_4G_MODULE: Starting data call sequence...
+I (13013) RNDIS_4G_MODULE: Checking signal quality...
+I (13019) RNDIS_4G_MODULE: Signal quality: RSSI=21, BER=99
+I (13023) RNDIS_4G_MODULE: Setting PDP context...
+I (13029) RNDIS_4G_MODULE: AT/SIM/network are ready, starting dialup...
+W (13156) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (13194) RNDIS_4G_MODULE: USB RNDIS GOT_IP: 192.168.0.100
+I (13194) iot_eth.netif_glue: netif "usb_rndis" Got IP Address
+I (13194) iot_eth.netif_glue: ~~~~~~~~~~~
+I (13197) iot_eth.netif_glue: ETHIP:192.168.0.100
+I (13201) iot_eth.netif_glue: ETHMASK:255.255.255.0
+I (13206) iot_eth.netif_glue: ETHGW:192.168.0.1
+I (13210) iot_eth.netif_glue: Main DNS: 192.168.0.1
+I (13215) iot_eth.netif_glue: Backup DNS: 0.0.0.0
+I (13219) iot_eth.netif_glue: ~~~~~~~~~~~
+W (13450) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (13650) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (13956) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (14156) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (14455) RNDIS_4G_MODULE: Dialup succeeded, reading modem info...
+I (14455) RNDIS_4G_MODULE: 获取4G模块信息...
+I (14456) RNDIS_4G_MODULE: 获取制造商ID成功: CMCC
+I (14461) RNDIS_4G_MODULE: 获取模块ID成功: ML307A
+W (14462) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (14472) RNDIS_4G_MODULE: 获取修订版本ID成功: ML307A-DSLN-MBRH1S00
+I (14481) RNDIS_4G_MODULE: PDP上下文: +CGDCONT: 1,"IP","CMNET",,0,0,,,,
+
++CGDCONT: 8,"IPV4V6","IMS",,0,0,0,2,1,1
+I (14488) RNDIS_4G_MODULE: 模块信息获取完成
+I (14492) RNDIS_4G_MODULE: Verifying network status after dialup...
+I (14500) RNDIS_4G_MODULE: Post-dial network stat=1
+I (14503) RNDIS_4G_MODULE: 4G dialup flow finished
+I (14507) RNDIS_4G_MODULE: 4G数据拨号指令发送成功，等待获取IP地址...
+I (14515) RNDIS_4G_MODULE: 4G网络已成功获取IP地址
+I (14520) RNDIS_4G_MODULE: 4G初始化成功完成！
+I (14525) RNDIS_4G_MODULE: 测试WiFi外网连通性...
+I (14530) network_manager: 开始测试 [WiFi] 网络接口连通性
+I (14536) network_manager: [WiFi] 网络接口IP: 10.231.194.225
+I (14542) network_manager: 正在尝试通过 [WiFi] 接口连接到 223.5.5.5:443...
+W (14671) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (14726) network_manager: [WiFi] 网络接口连通性测试成功 (223.5.5.5:443)
+I (14726) RNDIS_4G_MODULE: WiFi外网正常，保持WiFi路由。
+W (14968) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (15168) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (15474) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (15674) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (15979) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (16179) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (16373) http_ota: 连接成功
+I (16373) http_ota: 执行SSL/TLS握手...
+W (16486) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (16515) BATTERY_MODULE: ========================================
+I (16515) BATTERY_MODULE: ADC原始值: 1097
+I (16515) BATTERY_MODULE: ADC电压: 63 mV
+I (16518) BATTERY_MODULE: 电池电压: 4158 mV
+I (16522) BATTERY_MODULE: 电池电量: 94%
+I (16526) BATTERY_MODULE: 充电状态: 未充电
+I (16530) BATTERY_MODULE: ========================================
+W (16686) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (16992) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (17095) esp-x509-crt-bundle: Certificate validated
+W (17192) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (17500) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (17700) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (18007) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (18010) http_ota: 验证对端X.509证书...
+I (18010) http_ota: 证书验证成功
+I (18010) http_ota: 加密套件: TLS-ECDHE-ECDSA-WITH-AES-256-GCM-SHA384
+I (18017) http_ota: 发送HTTP请求...
+I (18021) http_ota: 读取HTTP响应...
+W (18207) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (18217) http_ota: OTA检查请求成功
+I (18217) http_ota: OTA检查任务完成，结果: 0
+I (18217) http_ota: OTA检查任务已完成，销毁资源
+I (18220) http_ota: 结束后 - 内部RAM剩余: 74783 字节
+I (18225) http_ota: 结束后 - PSRAM剩余: 5357752 字节
+E (18230) BRTC_APP: 返回错误码: 405, 消息: 认证失败
+Guru Meditation Error: Core  0 panic'ed (LoadProhibited). Exception was unhandled.
+
+Core  0 register dump:
+PC      : 0x400556d5  PS      : 0x00060330  A0      : 0x821b7989  A1      : 0x3fcb9ba0  
+A2      : 0x00000000  A3      : 0xfffffffc  A4      : 0x000000ff  A5      : 0x0000ff00  
+A6      : 0x00ff0000  A7      : 0xff000000  A8      : 0x00000000  A9      : 0x3fcb9e80  
+A10     : 0x00060323  A11     : 0x00000000  A12     : 0x00060320  A13     : 0x00000012  
+A14     : 0x00000030  A15     : 0x3c277030  SAR     : 0x00000020  EXCCAUSE: 0x0000001c  
+EXCVADDR: 0x00000000  LBEG    : 0x400556d5  LEND    : 0x400556e5  LCOUNT  : 0xffffffff  
+
+
+Backtrace: 0x400556d2:0x3fcb9ba0 0x421b7986:0x3fcb9bb0 0x421ae5c3:0x3fcb9ed0 0x42012776:0x3fcb9f90 0x420144b7:0x3fcb9fb0 0x4201489b:0x3fcbac10 0x42012194:0x3fcbac40 0x421d8374:0x3fcbacc0
+
+
+
+
+ELF file SHA256: c692f0421
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x28 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40388ab1
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1668
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x317c
+entry 0x403c894c
+I (29) boot: ESP-IDF v5.5.4 2nd stage bootloader
+I (29) boot: compile time Jun  4 2026 12:45:26
+I (29) boot: Multicore bootloader
+I (29) boot: chip revision: v0.2
+I (32) boot: efuse block revision: v1.3
+I (36) qio_mode: Enabling default flash chip QIO
+I (40) boot.esp32s3: Boot SPI Speed : 80MHz
+I (44) boot.esp32s3: SPI Mode       : QIO
+I (48) boot.esp32s3: SPI Flash Size : 16MB
+I (52) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (59) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (78) boot:  2 otadata          OTA data         01 00 00010000 00002000
+I (85) boot:  3 ota_0            OTA app          00 10 00020000 003e8000
+I (91) boot:  4 ota_1            OTA app          00 11 00420000 003e8000
+I (98) boot:  5 model            Unknown data     01 82 00808000 00412000
+I (104) boot:  6 spiffs_data      Unknown data     01 82 00c1a000 00100000
+I (111) boot:  7 wifi_web         Unknown data     01 82 00d1a000 00040000
+I (117) boot: End of partition table
+I (121) esp_image: segment 0: paddr=00020020 vaddr=3c1e0020 size=89344h (561988) map
+I (211) esp_image: segment 1: paddr=000a936c vaddr=3fca7200 size=06cach ( 27820) load
+I (217) esp_image: segment 2: paddr=000b0020 vaddr=42000020 size=1d92dch (1938140) map
+I (504) esp_image: segment 3: paddr=00289304 vaddr=3fcadeac size=031c0h ( 12736) load
+I (507) esp_image: segment 4: paddr=0028c4cc vaddr=40378000 size=1f1a0h (127392) load
+I (532) esp_image: segment 5: paddr=002ab674 vaddr=50000000 size=00028h (    40) load
+I (533) esp_image: segment 6: paddr=002ab6a4 vaddr=600fe000 size=00060h (    96) load
+I (549) boot: Loaded app from partition at offset 0x20000
+I (549) boot: Disabling RNG early entropy source...
+W (559) flash HPM: HPM mode is optional feature that depends on flash model. Read Docs First!
+W (559) flash HPM: HPM mode with DC adjustment is disabled. Some flash models may not be supported. Read Docs First!
+W (566) flash HPM: High performance mode of this flash model hasn't been supported.
+I (574) MSPI Timing: Enter flash timing tuning
+I (578) octal_psram: vendor id    : 0x0d (AP)
+I (582) octal_psram: dev id       : 0x02 (generation 3)
+I (587) octal_psram: density      : 0x03 (64 Mbit)
+I (592) octal_psram: good-die     : 0x01 (Pass)
+I (596) octal_psram: Latency      : 0x01 (Fixed)
+I (600) octal_psram: VCC          : 0x01 (3V)
+I (604) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (609) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (614) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (619) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (624) octal_psram: DriveStrength: 0x00 (1/1)
+I (628) MSPI Timing: Enter psram timing tuning
+I (641) esp_psram: Found 8MB PSRAM device
+I (641) esp_psram: Speed: 120MHz
+I (672) mmu_psram: Read only data copied and mapped to SPIRAM
+I (788) mmu_psram: Instructions copied and mapped to SPIRAM
+I (788) cpu_start: Multicore app
+I (1025) esp_psram: SPI SRAM memory test OK
+I (1034) cpu_start: GPIO 44 and 43 are used as console UART I/O pins
+I (1034) cpu_start: Pro cpu start user code
+I (1034) cpu_start: cpu freq: 240000000 Hz
+I (1036) app_init: Application information:
+I (1040) app_init: Project name:     leyu_yingji_v16_1
+I (1045) app_init: App version:      7a610fd-dirty
+I (1050) app_init: Compile time:     Jun  4 2026 12:43:37
+I (1055) app_init: ELF file SHA256:  c692f0421...
+I (1059) app_init: ESP-IDF:          v5.5.4
+I (1063) efuse_init: Min chip rev:     v0.0
+I (1067) efuse_init: Max chip rev:     v0.99 
+I (1071) efuse_init: Chip rev:         v0.2
+I (1075) heap_init: Initializing. RAM available for dynamic allocation:
+I (1081) heap_init: At 3FCB4878 len 00034E98 (
