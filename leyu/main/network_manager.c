@@ -1,5 +1,9 @@
-/**
- * 网络管理器 - 处理WiFi和4G模块之间的切换
+
+/*
+ * @file network_manager.c
+ * @brief 网络管理模块
+ *        处理WiFi和4G模块之间的切换    
+ *        确保在不同网络环境下的无缝切换
  */
 
 #include "network_manager.h"
@@ -28,11 +32,13 @@ static bool is_4g_active = false;
 static bool is_wifi_active = false;
 static TimerHandle_t auto_switch_timer = NULL;
 static bool auto_switch_enabled = false;
-static int auto_switch_state = 0; // 0: 初始状态, 1: 已切换到4G, 2: 已切换回WiFi
+static int auto_switch_state = 0; // 0: 初始状态 1: 已切换到4G, 2: 已切换回WiFi
 static bool ntp_initialized = false;
 static bool ntp_sync_completed = false;
 static EventGroupHandle_t ntp_event_group = NULL;
+static int network_error_prompt_cooldown = 0;
 #define NTP_SYNC_COMPLETED_BIT BIT0
+#define NETWORK_ERROR_PROMPT_COOLDOWN_TICKS 3
 
 // NTP时间同步回调函数
 static void time_sync_notification_cb(struct timeval *tv)
@@ -56,7 +62,7 @@ static void time_sync_notification_cb(struct timeval *tv)
 static void initialize_ntp(void)
 {
     if (ntp_initialized) {
-        ESP_LOGI(TAG, "NTP已初始化，跳过");
+        ESP_LOGI(TAG, "NTP已初始化");
         return;
     }
     
@@ -65,13 +71,14 @@ static void initialize_ntp(void)
     // 创建NTP事件组
     if (!ntp_event_group) {
         ntp_event_group = xEventGroupCreate();
-        if (!ntp_event_group) {
+        // 修复NTP事件组创建相关的中文注释和日志
+            if (!ntp_event_group) {
             ESP_LOGE(TAG, "创建NTP事件组失败");
             return;
         }
     }
     
-    // 设置NTP服务器
+    // 设置NTP服务模式为轮询
     esp_sntp_setoperatingmode(ESP_SNTP_OPMODE_POLL);
     esp_sntp_setservername(0, "pool.ntp.org");
     esp_sntp_setservername(1, "time.nist.gov");
@@ -87,7 +94,7 @@ static void initialize_ntp(void)
     esp_sntp_init();
     
     ntp_initialized = true;
-    ESP_LOGI(TAG, "NTP初始化完成，开始同步时间...");
+    ESP_LOGI(TAG, "NTP初始化完成，开始同步时间..");
 }
 
 // 等待NTP时间同步完成
@@ -104,7 +111,7 @@ bool wait_for_ntp_sync(uint32_t timeout_ms)
         return true;
     }
     
-    ESP_LOGI(TAG, "等待NTP时间同步完成，超时时间: %u ms", timeout_ms);
+    ESP_LOGI(TAG, "等待NTP时间同步完成，超时时间为 %u ms", timeout_ms);
     EventBits_t bits = xEventGroupWaitBits(
         ntp_event_group,
         NTP_SYNC_COMPLETED_BIT,
@@ -122,7 +129,7 @@ bool wait_for_ntp_sync(uint32_t timeout_ms)
     }
 }
 
-// 获取当前活动的网络接口
+// 获取当前活动的网络接�?
 esp_netif_t *get_active_netif(void)
 {
     esp_netif_t *netif = NULL;
@@ -141,33 +148,36 @@ esp_netif_t *get_active_netif(void)
 // 智能网络切换监控任务
 static void network_monitor_task(void *pvParameters)
 {
-    ESP_LOGI(TAG, "网络智能监控任务已启动，将自动切换最优网络...");
+    ESP_LOGI(TAG, "网络智能监控任务已启动，将自动切换最优网络接口...");
     static int wifi_fail_count = 0;
     static int wifi_recovery_count = 0;
     static int wifi_cooldown_counter = 0; // 新增：WiFi冷却期计数器
     
     while (1) {
-        // 强制执行路由表对齐：确保 LWIP 的默认网卡（Default Netif）始终与当前的 active_netif 一致，
-        // 防止 4G 模块 RNDIS 获取 IP 时抢占默认路由。
+        // 强制执行路由表对齐：确保 LWIP 的默认网卡（Default Netif）始终与当前�?active_netif 一致，
+        // 防止 4G 模块 RNDIS 获取 IP 时抢占默认路由�?
         esp_netif_t *current_active = get_active_netif();
         if (current_active) {
             esp_netif_set_default_netif(current_active);
         }
 
-        // 每 10 秒检查一次，避免频繁探测导致系统资源占用过高或 LwIP 崩溃
+        // �?10 秒检查一次，避免频繁探测导致系统资源占用过高�?LwIP 崩溃
         vTaskDelay(pdMS_TO_TICKS(10000));
         
         if (wifi_cooldown_counter > 0) {
             wifi_cooldown_counter--;
         }
+        if (network_error_prompt_cooldown > 0) {
+            network_error_prompt_cooldown--;
+        }
         
-        // 只有当当前使用的是 4G 网络时，才去检查 WiFi 是否恢复
+        // 只有当当前使用的�?4G 网络时，才去检�?WiFi 是否恢复
         if (is_4g_active && !is_wifi_active) {
             extern uint8_t internet_connected;
 
             // 如果 4G 网络是通的，执行严格的冷却防抖；但如果 4G 也是断的（设备处于彻底断网的绝境），则无视冷却期，随时准备抢救WiFi
             if (wifi_cooldown_counter > 0 && internet_connected == 1) {
-                ESP_LOGD(TAG, "[4G] WiFi正在冷却期(剩余%d秒)，暂不尝试切回WiFi", wifi_cooldown_counter * 10);
+                ESP_LOGD(TAG, "[4G] WiFi正在冷却�?剩余%d�?，暂不尝试切回WiFi", wifi_cooldown_counter * 10);
                 continue;
             }
 
@@ -177,32 +187,32 @@ static void network_monitor_task(void *pvParameters)
                 esp_netif_ip_info_t ip_info;
                 if (esp_netif_get_ip_info(wifi_netif, &ip_info) == ESP_OK && ip_info.ip.addr != 0) {
                     ESP_LOGD(TAG, "[4G] 当前使用4G路由，检测到WiFi已连接路由器，测试WiFi外网...");
-                    // 测试 WiFi 的外网连通性
+                    // 测试 WiFi 的外网连通�?
                     if (test_network_connectivity_with_netif("[WiFi]", wifi_netif) == ESP_OK) {
                         wifi_recovery_count++;
-                        ESP_LOGI(TAG, "WiFi外网连通测试成功 (%d)", wifi_recovery_count);
+                        ESP_LOGI(TAG, "WiFi外网连通测试成�?(%d)", wifi_recovery_count);
                         
-                        // 急救模式：如果4G也是断的，只要WiFi通1次就立刻切回；如果4G正常，则需要连续稳3次
+                        // 急救模式：如�?G也是断的，只要WiFi�?次就立刻切回；如�?G正常，则需要连续稳3�?
                         int required_recovery = (internet_connected == 1) ? 3 : 1;
                         
                         if (wifi_recovery_count >= required_recovery) {
                             ESP_LOGI(TAG, "满足WiFi恢复条件！自动切换回WiFi路由");
-                            audio_prompt_play("file:///spiffs/networkchange.mp3"); // 播放网络切换提示
+                            audio_prompt_play("file:///spiffs/5_wifinet.mp3"); // 播放切换到WiFi提示
                             switch_to_wifi_network();
                             wifi_recovery_count = 0;
                             wifi_fail_count = 0;
-                            wifi_cooldown_counter = 0; // 切回WiFi后，提前清空冷却器
+                            wifi_cooldown_counter = 0; // 切回WiFi后，提前清空冷却�?
                         }
                     } else {
                         wifi_recovery_count = 0;
-                        ESP_LOGD(TAG, "WiFi仍无外网，保持4G路由");
+                        ESP_LOGD(TAG, "WiFi仍无外网，保�?G路由");
                     }
                 } else {
                     wifi_recovery_count = 0;
                 }
             }
         } 
-        // 当当前使用的是 WiFi 时，监控它是否断网
+        // 当当前使用的�?WiFi 时，监控它是否断�?
         else if (is_wifi_active && !is_4g_active) {
             esp_netif_t *wifi_netif = esp_netif_get_handle_from_ifkey("WIFI_STA_DEF");
             bool wifi_lost = false;
@@ -216,8 +226,8 @@ static void network_monitor_task(void *pvParameters)
                     wifi_lost = true;
                     ESP_LOGW(TAG, "WiFi已断开连接或失去IP地址");
                 } else {
-                    // WiFi 表面上连着路由器，测试外网连通性
-                    ESP_LOGD(TAG, "[WiFi] 当前使用WiFi路由，测试其外网连通性...");
+                    // WiFi 表面上连着路由器，测试外网连通�?
+                    ESP_LOGD(TAG, "[WiFi] 当前使用WiFi路由，测试其外网连通�?..");
                     if (test_network_connectivity_with_netif("[WiFi]", wifi_netif) != ESP_OK) {
                         wifi_lost = true;
                         ESP_LOGW(TAG, "WiFi虽然连着路由器，但是无法访问外网");
@@ -227,48 +237,60 @@ static void network_monitor_task(void *pvParameters)
             
             if (wifi_lost) {
                 wifi_fail_count++;
-                ESP_LOGW(TAG, "检测到WiFi异常，累计失败次数: %d", wifi_fail_count);
+                ESP_LOGW(TAG, "检测到WiFi异常，累计失败次�? %d", wifi_fail_count);
                 if (wifi_fail_count >= 1) {
                     extern uint8_t internet_connected;
+                    extern bool check_wifi_config_saved(void);
+                    if (!check_wifi_config_saved()) {
+                        ESP_LOGI(TAG, "当前未保存有效WiFi配置，跳过WiFi失败后的4G提示与自动切换");
+                        wifi_fail_count = 0;
+                        wifi_recovery_count = 0;
+                        continue;
+                    }
                     if (internet_connected == 1) {
-                        ESP_LOGW(TAG, "[WiFi] 极速检测失败，紧急切换到4G路由兜底！");
-                        audio_prompt_play("file:///spiffs/networkchange.mp3"); // 播放网络切换提示
+                        ESP_LOGW(TAG, "[WiFi] 极速检测失败，紧急切换到4G路由兜底");
+                        audio_prompt_play("file:///spiffs/4_4Gnet.mp3"); // 播放切换4G提示
                     } else {
-                        ESP_LOGW(TAG, "[WiFi] 极速检测失败，且4G未就绪，网络已彻底断开！");
-                        audio_prompt_play("file:///spiffs/wifierror.mp3"); // 播放网络断开提示
+                        ESP_LOGW(TAG, "[WiFi] 极速检测失败，4G未就绪，网络已彻底断开");
+                        if (network_error_prompt_cooldown == 0) {
+                            audio_prompt_play("file:///spiffs/10_networkerror.mp3"); // 播放网络断开提示
+                            network_error_prompt_cooldown = NETWORK_ERROR_PROMPT_COOLDOWN_TICKS;
+                        } else {
+                            ESP_LOGI(TAG, "网络断开提示仍在冷却期内，跳过本次播报");
+                        }
                     }
                     switch_to_4g_network();
                     wifi_fail_count = 0;
                     wifi_recovery_count = 0;
-                    wifi_cooldown_counter = 30; // 设置 30 * 10s = 5 分钟的WiFi冷却期
-                    ESP_LOGI(TAG, "由于WiFi不稳定，已强制设置5分钟的WiFi冷却期，期间不尝试切回WiFi。");
+                    wifi_cooldown_counter = 30; // 设置 30 * 10s = 5 分钟的WiFi冷却�?
+                    ESP_LOGI(TAG, "由于WiFi不稳定，已强制设5分钟的WiFi冷却期，期间不尝试切回WiFi路由");
                 }
             } else {
-                wifi_fail_count = 0; // 只要有一次成功就清零
+                wifi_fail_count = 0; // 只要有一次成功就清零失败次数
             }
         }
     }
 }
 
-// 切换到4G网络
+// 切换4G网络
 esp_err_t switch_to_4g_network(void)
 {
-    ESP_LOGI(TAG, "正在切换到4G网络...");
+    ESP_LOGI(TAG, "正在切换4G网络...");
     
     // 检查是否已经是4G网络
     if (is_4g_active && !is_wifi_active) {
-        ESP_LOGW(TAG, "已经是4G网络，跳过切换");
+        ESP_LOGW(TAG, "已经4G网络，跳过切换");
         return ESP_OK;
     }
     
-    // 检查4G模块是否已初始化
+    // 检�?G模块是否已初始化
     esp_netif_t *usb_netif = get_usb_netif();
     if (!usb_netif) {
         ESP_LOGE(TAG, "4G模块未初始化，无法切换");
         return ESP_ERR_INVALID_STATE;
     }
     
-    // 设置4G网络为默认路由
+    // 设置4G网络为默认路�?
     esp_err_t ret = esp_netif_set_default_netif(usb_netif);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "设置4G为默认网络失败: %s", esp_err_to_name(ret));
@@ -281,7 +303,7 @@ esp_err_t switch_to_4g_network(void)
     // 网络切换成功，初始化NTP时间同步
     // initialize_ntp();
     
-    // 配置AP路由，使连接到AP的设备可以通过4G网络访问互联网
+    // 配置AP路由，使连接到AP的设备可以通过4G网络访问互联�?
     esp_netif_t *ap_netif = NULL;
     
     // 尝试多次获取AP网络接口，因为AP可能还在初始化过程中
@@ -293,7 +315,7 @@ esp_err_t switch_to_4g_network(void)
         ap_netif = app_wifi_get_ap_netif();
         
         if (!ap_netif) {
-            // 如果直接获取失败，尝试通过接口键获取
+            // 如果直接获取失败，尝试通过接口键获�?
             ESP_LOGI(TAG, "直接获取失败，尝试通过接口键获取AP网络接口");
             ap_netif = esp_netif_get_handle_from_ifkey("WIFI_AP_DEF");
             
@@ -312,7 +334,7 @@ esp_err_t switch_to_4g_network(void)
         if (ret != ESP_OK) {
             ESP_LOGW(TAG, "配置AP路由失败: %s", esp_err_to_name(ret));
         } else {
-            ESP_LOGI(TAG, "已配置AP路由通过4G网络访问互联网");
+            ESP_LOGI(TAG, "已配置AP路由通过4G网络访问互联网络");
         }
     } else {
         ESP_LOGW(TAG, "经过 %d 次尝试后仍未找到AP网络接口，跳过AP路由配置", max_retries);
@@ -323,7 +345,7 @@ esp_err_t switch_to_4g_network(void)
     // 强制重新建连
     brtc_force_reconnect();
     
-    // 测试4G网络连通性
+    // 测试4G网络连通�?
     ESP_LOGI(TAG, "等待3秒让4G网络稳定...");
     vTaskDelay(pdMS_TO_TICKS(3000));
     
@@ -388,13 +410,13 @@ static int connect_with_timeout(int sock, const struct sockaddr *addr, socklen_t
         return 0;
     }
     return -1;
-}
+}   
 
 esp_err_t test_network_connectivity_with_netif(const char *network_name, esp_netif_t *netif)
 {
     ESP_LOGI(TAG, "开始测试 %s 网络接口连通性", network_name);
     
-    if (!netif) {
+    if (!netif) {   
         ESP_LOGE(TAG, "网络接口参数为空");
         return ESP_ERR_INVALID_ARG;
     }
@@ -415,7 +437,7 @@ esp_err_t test_network_connectivity_with_netif(const char *network_name, esp_net
         return ESP_FAIL;
     }
     
-    // 测试2: 尝试创建一个TCP套接字连接到公共DNS服务器
+    // 测试2: 尝试创建一个TCP套接字连接到公共DNS服务
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         ESP_LOGE(TAG, "%s 创建套接字失败", network_name);
@@ -424,7 +446,7 @@ esp_err_t test_network_connectivity_with_netif(const char *network_name, esp_net
     
     // 设置超时
     struct timeval timeout;
-    timeout.tv_sec = 5;  // 5秒超时
+    timeout.tv_sec = 5;  // 5秒超时?
     timeout.tv_usec = 0;
     setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
     setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof(timeout));
@@ -445,25 +467,25 @@ esp_err_t test_network_connectivity_with_netif(const char *network_name, esp_net
         ESP_LOGW(TAG, "无法获取 %s 的底层网络接口名，测试可能走默认路由", network_name);
     }
     
-    // 连接到Ali DNS服务器 (223.5.5.5:443) 防止被 Captive Portal 劫持端口53和80
+    // 连接到Ali DNS服务�?(223.5.5.5:443) 防止�?Captive Portal 劫持端口53�?0
     struct sockaddr_in dest_addr;
     dest_addr.sin_addr.s_addr = inet_addr("223.5.5.5");
     dest_addr.sin_family = AF_INET;
     dest_addr.sin_port = htons(443);
     
-    ESP_LOGI(TAG, "正在尝试通过 %s 接口连接到 223.5.5.5:443...", network_name);
+    ESP_LOGI(TAG, "正在尝试通过 %s 接口连接到223.5.5.5:443", network_name);
     int err = connect_with_timeout(sock, (struct sockaddr *)&dest_addr, sizeof(dest_addr), 2);
     
     // 关闭套接字
     close(sock);
     
     if (err == 0) {
-        ESP_LOGI(TAG, "%s 网络接口连通性测试成功 (223.5.5.5:443)", network_name);
+        ESP_LOGI(TAG, "%s 网络接口连通性测试成功(223.5.5.5:443)", network_name);
         return ESP_OK;
     } else {
         ESP_LOGW(TAG, "223.5.5.5:443 连通失败，尝试备用探活地址 (百度 220.181.38.148:443)...");
         
-        // 重新创建套接字用于备用探活
+        // 重新创建套接字用于备用探活?
         sock = socket(AF_INET, SOCK_STREAM, 0);
         if (sock < 0) return ESP_FAIL;
         
@@ -484,7 +506,7 @@ esp_err_t test_network_connectivity_with_netif(const char *network_name, esp_net
         close(sock);
         
         if (err == 0) {
-            ESP_LOGI(TAG, "%s 网络接口连通性测试成功 (HTTP 220.181.38.148:443)", network_name);
+            ESP_LOGI(TAG, "%s 网络接口连通性测试成�?(HTTP 220.181.38.148:443)", network_name);
             return ESP_OK;
         }
         
@@ -493,7 +515,7 @@ esp_err_t test_network_connectivity_with_netif(const char *network_name, esp_net
     }
 }
 
-// 配置WiFi AP路由，使连接到AP的设备可以通过4G网络访问互联网
+// 配置WiFi AP路由，使连接到AP的设备可以通过4G网络访问互联网络  
 esp_err_t configure_ap_routing(esp_netif_t *ap_netif, esp_netif_t *uplink_netif)
 {
     if (!ap_netif || !uplink_netif) {
@@ -501,7 +523,7 @@ esp_err_t configure_ap_routing(esp_netif_t *ap_netif, esp_netif_t *uplink_netif)
         return ESP_ERR_INVALID_ARG;
     }
     
-    ESP_LOGI(TAG, "配置AP路由，使连接设备可通过上行链路访问互联网");
+    ESP_LOGI(TAG, "配置AP路由，使连接设备可通过上行链路访问互联网络");
     
     // 获取上行链路IP地址
     esp_netif_ip_info_t uplink_ip_info;
@@ -522,10 +544,10 @@ esp_err_t configure_ap_routing(esp_netif_t *ap_netif, esp_netif_t *uplink_netif)
     ESP_LOGI(TAG, "AP网关: " IPSTR ", 上行链路IP: " IPSTR, 
              IP2STR(&ap_ip_info.ip), IP2STR(&uplink_ip_info.ip));
     
-    // 停止DHCP服务器
+    // 停止DHCP服务�?
     ret = esp_netif_dhcps_stop(ap_netif);
     if (ret != ESP_OK && ret != ESP_ERR_ESP_NETIF_DHCP_ALREADY_STOPPED) {
-        ESP_LOGW(TAG, "停止DHCP服务器失败或已停止: %s", esp_err_to_name(ret));
+        ESP_LOGW(TAG, "停止DHCP服务器失败或已停�? %s", esp_err_to_name(ret));
     }
     
     // 配置AP的网关为上行链路IP地址
@@ -542,7 +564,7 @@ esp_err_t configure_ap_routing(esp_netif_t *ap_netif, esp_netif_t *uplink_netif)
     dns_info.ip.type = IPADDR_TYPE_V4;
     ret = esp_netif_set_dns_info(ap_netif, ESP_NETIF_DNS_MAIN, &dns_info);
     if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "设置DNS服务器失败: %s", esp_err_to_name(ret));
+        ESP_LOGE(TAG, "设置DNS服务器失�? %s", esp_err_to_name(ret));
         return ret;
     }
     
@@ -563,10 +585,10 @@ esp_err_t configure_ap_routing(esp_netif_t *ap_netif, esp_netif_t *uplink_netif)
         ESP_LOGW(TAG, "设置DHCP DNS选项失败: %s", esp_err_to_name(ret));
     }
     
-    // 重启DHCP服务器
+    // 重启DHCP服务�?
     ret = esp_netif_dhcps_start(ap_netif);
     if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "启动DHCP服务器失败: %s", esp_err_to_name(ret));
+        ESP_LOGE(TAG, "启动DHCP服务器失�? %s", esp_err_to_name(ret));
         return ret;
     }
     
@@ -635,11 +657,11 @@ esp_err_t switch_to_wifi_network(void)
         }
     }
     
-    // 最后的尝试：遍历所有网络接口，找到WiFi相关的接口
+    // 最后的尝试：遍历所有网络接口，找到WiFi相关的接�?
     if (!wifi_netif) {
         ESP_LOGI(TAG, "尝试遍历所有网络接口查找WiFi接口");
         esp_netif_t *netif = NULL;
-        // 由于esp_netif_get_handle函数不存在，我们只能通过已知的键名查找
+        // 由于esp_netif_get_handle函数不存在，我们只能通过已知的键名查�?
         // 尝试更多可能的WiFi接口键名
         const char *wifi_keys[] = {"WIFI_STA_DEF", "WIFI_AP_DEF", "WIFI_STA", "WIFI_AP"};
         for (int i = 0; i < sizeof(wifi_keys)/sizeof(wifi_keys[0]); i++) {
@@ -659,11 +681,11 @@ esp_err_t switch_to_wifi_network(void)
         }
     }
     
-    if (!wifi_netif) {
+        if (!wifi_netif) {
         ESP_LOGE(TAG, "WiFi网络接口不存在，无法切换。当前WiFi模式: %d", current_mode);
         // 打印所有可用的网络接口键名，用于调试
-        ESP_LOGI(TAG, "当前可用的网络接口:");
-        // 尝试常见的网络接口键名
+        ESP_LOGI(TAG, "当前可用的网络接口键名:");
+        // 尝试常见的网络  接口键名     
         const char *common_keys[] = {"WIFI_STA_DEF", "WIFI_AP_DEF", "WIFI_STA", "WIFI_AP", "ETH_DEF", "USB_DEF"};
         for (int i = 0; i < sizeof(common_keys)/sizeof(common_keys[0]); i++) {
             esp_netif_t *netif = esp_netif_get_handle_from_ifkey(common_keys[i]);
@@ -676,7 +698,7 @@ esp_err_t switch_to_wifi_network(void)
         return ESP_ERR_INVALID_STATE;
     }
     
-    // 设置WiFi网络为默认路由
+    // 设置WiFi网络为默认路由接口
     ret = esp_netif_set_default_netif(wifi_netif);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "设置WiFi为默认网络失败: %s", esp_err_to_name(ret));
@@ -689,7 +711,7 @@ esp_err_t switch_to_wifi_network(void)
     // WiFi网络不初始化NTP，避免时间变化导致百度RTC断连
     // initialize_ntp();
     
-    // 配置AP路由，使连接到AP的设备可以通过WiFi网络访问互联网
+    // 配置AP路由，使连接到AP的设备可以通过WiFi网络访问互联网络
     esp_netif_t *ap_netif = NULL;
     
     // 尝试多次获取AP网络接口，因为AP可能还在初始化过程中
@@ -697,11 +719,11 @@ esp_err_t switch_to_wifi_network(void)
     const int max_retries = 5;
     
     while (retry_count < max_retries && !ap_netif) {
-        ESP_LOGI(TAG, "尝试获取AP网络接口，第 %d 次", retry_count + 1);
+        ESP_LOGI(TAG, "尝试获取AP网络接口，第 %d 次", retry_count + 1); 
         ap_netif = app_wifi_get_ap_netif();
         
         if (!ap_netif) {
-            // 如果直接获取失败，尝试通过接口键获取
+            // 如果直接获取失败，尝试通过接口键获取AP网络接口
             ESP_LOGI(TAG, "直接获取失败，尝试通过接口键获取AP网络接口");
             ap_netif = esp_netif_get_handle_from_ifkey("WIFI_AP_DEF");
             
@@ -723,7 +745,7 @@ esp_err_t switch_to_wifi_network(void)
             if (ret != ESP_OK) {
                 ESP_LOGW(TAG, "配置AP路由失败: %s", esp_err_to_name(ret));
             } else {
-                ESP_LOGI(TAG, "已配置AP路由通过WiFi网络访问互联网");
+                ESP_LOGI(TAG, "已配置AP路由通过WiFi网络访问互联网络");          
             }
         } else {
             ESP_LOGW(TAG, "未找到STA网络接口，无法配置AP路由");
@@ -737,7 +759,7 @@ esp_err_t switch_to_wifi_network(void)
     // 强制断开当前百度引擎，使其立即从新的WiFi路由重新建连，避免死等超时
     brtc_force_reconnect();
     
-    // 测试WiFi网络连通性
+    // 测试WiFi网络连通性   
     ESP_LOGI(TAG, "等待5秒让WiFi网络稳定...");
     vTaskDelay(pdMS_TO_TICKS(5000));
     
@@ -779,7 +801,7 @@ esp_err_t network_manager_init(void)
         is_4g_active = true;
         is_wifi_active = false;
         
-        // 静默将默认路由设为4G
+        // 静默将默认路由设�?G
         esp_netif_t *eth_netif = esp_netif_get_handle_from_ifkey("ETH_DEF");
         if (eth_netif) {
             esp_netif_set_default_netif(eth_netif);
@@ -790,7 +812,7 @@ esp_err_t network_manager_init(void)
         esp_err_t ret = esp_wifi_get_mode(&current_mode);
         if (ret == ESP_OK && current_mode != WIFI_MODE_NULL) {
             is_wifi_active = true;
-            ESP_LOGI(TAG, "检测到WiFi已初始化，模式: %d", current_mode);
+            ESP_LOGI(TAG, "检测到WiFi已初始化，模式 %d", current_mode);
         } else {
             is_wifi_active = false;
             ESP_LOGI(TAG, "WiFi未初始化");
@@ -822,11 +844,11 @@ esp_err_t test_network_connectivity(const char *network_name)
     ESP_LOGI(TAG, "开始测试 %s 网络连通性", network_name);
     
     // 打印当前网络状态
-    ESP_LOGI(TAG, "当前网络状态 - 4G: %s, WiFi: %s", 
+    ESP_LOGI(TAG, "当前网络状态: 4G: %s, WiFi: %s", 
              is_4g_active ? "活动" : "非活动", 
              is_wifi_active ? "活动" : "非活动");
     
-    // 获取当前活动的网络接口
+    // 获取当前活动的网络接口   
     esp_netif_t *active_netif = get_active_netif();
     if (!active_netif) {
         ESP_LOGE(TAG, "无法获取活动网络接口");
@@ -851,7 +873,7 @@ esp_err_t test_network_connectivity(const char *network_name)
         }
         
         if (!active_netif) {
-            ESP_LOGE(TAG, "所有尝试都失败，无法获取网络接口");
+            ESP_LOGE(TAG, "所有尝试都失败，无法获取网络接口");   
             return ESP_FAIL;
         }
     }
@@ -872,7 +894,7 @@ esp_err_t test_network_connectivity(const char *network_name)
         return ESP_FAIL;
     }
     
-    // 测试2: 尝试创建一个TCP套接字连接到公共DNS服务器
+    // 测试2: 尝试创建一个TCP套接字连接到公共DNS服务(223.5.5.5:53)
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         ESP_LOGE(TAG, "%s 创建套接字失败", network_name);
@@ -886,13 +908,13 @@ esp_err_t test_network_connectivity(const char *network_name)
     setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
     setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof(timeout));
     
-    // 连接到Ali DNS服务器 (223.5.5.5:53)
+    // 连接到Ali DNS服务�?(223.5.5.5:53)
     struct sockaddr_in dest_addr;
     dest_addr.sin_addr.s_addr = inet_addr("223.5.5.5");
     dest_addr.sin_family = AF_INET;
     dest_addr.sin_port = htons(53);
     
-    ESP_LOGI(TAG, "正在尝试连接到 223.5.5.5:53...");
+    ESP_LOGI(TAG, "正在尝试连接�?223.5.5.5:53...");
     int err = connect_with_timeout(sock, (struct sockaddr *)&dest_addr, sizeof(dest_addr), 2);
     
     // 关闭套接字
@@ -902,7 +924,7 @@ esp_err_t test_network_connectivity(const char *network_name)
         ESP_LOGI(TAG, "%s 网络连通性测试成功，已成功连接到 223.5.5.5:53", network_name);
         return ESP_OK;
     } else {
-        ESP_LOGE(TAG, "%s 网络连通性测试失败，无法连接到 223.5.5.5:53，错误: %d", network_name, errno);
+        ESP_LOGE(TAG, "%s 网络连通性测试失败，无法连接到 223.5.5.5:53，错误码 %d", network_name, errno);
         return ESP_FAIL;
     }
 }
